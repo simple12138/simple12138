@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>长梦未央_simple</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="simple">
+  
+  
+  <meta property="og:type" content="website">
+<meta property="og:title" content="长梦未央_simple">
+<meta property="og:url" content="https://github.com/simple12138/simple12138.github.io.git/index.html">
+<meta property="og:site_name" content="长梦未央_simple">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="长梦未央_simple">
+  
+    <link rel="alternate" href="/atom.xml" title="长梦未央_simple" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">长梦未央_simple</a></h1>
+    <p><a href="/"></a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content">
+
+
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2017/10/18/HTTP协议/">
+  <time datetime="2017-10-18T14:17:16.325Z">
+    2017-10-18
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2017/10/18/HTTP协议/"></a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>#HTTP协议</p>
+<p>##</p>
+<ol>
+<li>HTTP客户端发起请求，创建端口</li>
+<li>HTTP服务器在端口监听客户端请求</li>
+<li>HTTP服务器向客户端返回状态和内容</li>
+<li></li>
+</ol>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2017/10/16/JavaScript中的DOM操作/">
+  <time datetime="2017-10-16T14:43:23.391Z">
+    2017-10-16
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2017/10/16/JavaScript中的DOM操作/"></a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>#JavaScript</p>
+<p>##</p>
+<p>###DOM元素的创建和添加</p>
+<ul>
+<li>父类.appendChild(子节点)</li>
+<li><p>父类.insertBefore(子节点，在谁之前)</p>
+<pre><code>&lt;ul id = &quot;ul1&quot;&gt;&lt;/ul&gt;
+
+var a =function(){
+    var oLi=document.createElement(&apos;li&apos;);
+    var aLi=oUl.getElementsByTagName(&apos;li&apos;);
+
+    oLi.innerHTML=oTxt.value;
+    if(aLi.length&gt;0){//判断使为了适配IE浏览器
+        oUl.insertBefore(oLi,aLi[0]);
+        //ali[0],是为了插到第一位
+    }else{
+        oUl.appendChild(oLi);
+    }
+
+};
+</code></pre></li>
+</ul>
+<p>###删除元素</p>
+<ul>
+<li><p>父级.removeChild(子节点)</p>
+<pre><code>&lt;ul id = &quot;ul1&quot;&gt;
+&lt;li&gt;1&lt;a herf=&quot;#&quot;&gt;删除&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2&lt;a herf=&quot;#&quot;&gt;删除&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;3&lt;a herf=&quot;#&quot;&gt;删除&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;4&lt;a herf=&quot;#&quot;&gt;删除&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+var a =function(){
+    var aA=document.getElementsByTagName(&apos;a&apos;);
+    var oUl=document.getElementbYId(&apos;ul1&apos;);
+    for(var i=0;i&lt;aA.length;i++){
+        aA[i].onclick=function(){
+            oul.removeChild(this.parentNode);
+
+    };
+
+};
+</code></pre></li>
+</ul>
+<p>###控制表单元素</p>
+<ul>
+<li>rows 列</li>
+<li>cells 行</li>
+</ul>
+<pre><code>var oTab=document.getElementById(&apos;tab1&apos;);
+alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的第二列中的第二行的文本
+</code></pre><p>This is an <a href="http://example.com/" target="_blank" rel="external">example link</a>.</p>
+<p>This is an <a href="http://example.com/" title="With a Title" target="_blank" rel="external">example link</a>.</p>
+<p>I get 10 times more traffic from <a href="http://google.com/" title="Google" target="_blank" rel="external">Google</a> than from<br><a href="http://search.yahoo.com/" title="Yahoo Search" target="_blank" rel="external">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search" target="_blank" rel="external">MSN</a>.</p>
+<p><img src="/path/to/img.jpg" alt="alt text" title="Title"></p>
+<p><img src="/path/to/img.jpg" alt="alt text" title="Title"></p>
+<p>I strongly recommend against using any <code>&lt;blink&gt;</code> tags.</p>
+<p>you’ve got to put paragraph tags in your blockquotes:</p>
+<blockquote><br><p>For exampdfsdfdsfsdfdsfdsfsdfdle.</p><br>sdsadsadsad<br>fdsfdsfsd<br>dsfsd<br></blockquote>
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2017/09/26/Hello/">
+  <time datetime="2017-09-26T05:10:14.000Z">
+    2017-09-26
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2017/09/26/Hello/">Hello</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>撒旦撒旦撒旦撒</p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2017/09/26/hello-world/">
+  <time datetime="2017-09-26T05:06:25.053Z">
+    2017-09-26
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2017/09/26/hello-world/">Hello World</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+
+  <nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav>
+
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2017 <a href="/">simple</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">orderedlist</a>
+   | 
+  Redesign by <a href="http://heroicyang.com/" target="_blank">Heroic Yang</a>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>
