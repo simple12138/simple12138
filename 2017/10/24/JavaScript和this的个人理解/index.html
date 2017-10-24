@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="#HTTP协议 ##  HTTP客户端发起请求，创建端口 HTTP服务器在端口监听客户端请求 HTTP服务器向客户端返回状态和内容">
+<meta name="description" content="===========title: JavaScript闭包和this的个人理解date: 2017-10-24 21:07:25tags: JavaScript categories: web开发#闭包 ##简单来说 每个函数都可以访问其外围作用域中的所有变量闭包是指一些函数通过某种方式 可以随时被访问 即使它的外部代码已经执行完毕function A（）{function b（）{}}在执行完">
 <meta property="og:type" content="article">
 <meta property="og:title" content="长梦未央_simple">
-<meta property="og:url" content="https://github.com/simple12138/simple12138.github.io.git/2017/10/18/HTTP协议/index.html">
+<meta property="og:url" content="https://github.com/simple12138/simple12138.github.io.git/2017/10/24/JavaScript和this的个人理解/index.html">
 <meta property="og:site_name" content="长梦未央_simple">
-<meta property="og:description" content="#HTTP协议 ##  HTTP客户端发起请求，创建端口 HTTP服务器在端口监听客户端请求 HTTP服务器向客户端返回状态和内容">
-<meta property="og:updated_time" content="2017-10-18T14:17:16.363Z">
+<meta property="og:description" content="===========title: JavaScript闭包和this的个人理解date: 2017-10-24 21:07:25tags: JavaScript categories: web开发#闭包 ##简单来说 每个函数都可以访问其外围作用域中的所有变量闭包是指一些函数通过某种方式 可以随时被访问 即使它的外部代码已经执行完毕function A（）{function b（）{}}在执行完">
+<meta property="og:updated_time" content="2017-10-24T14:47:37.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="长梦未央_simple">
-<meta name="twitter:description" content="#HTTP协议 ##  HTTP客户端发起请求，创建端口 HTTP服务器在端口监听客户端请求 HTTP服务器向客户端返回状态和内容">
+<meta name="twitter:description" content="===========title: JavaScript闭包和this的个人理解date: 2017-10-24 21:07:25tags: JavaScript categories: web开发#闭包 ##简单来说 每个函数都可以访问其外围作用域中的所有变量闭包是指一些函数通过某种方式 可以随时被访问 即使它的外部代码已经执行完毕function A（）{function b（）{}}在执行完">
 
 
 
@@ -118,7 +118,7 @@
 
 
 
-  <link rel="canonical" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/18/HTTP协议/"/>
+  <link rel="canonical" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/24/JavaScript和this的个人理解/"/>
 
 
 
@@ -231,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/18/HTTP协议/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/24/JavaScript和this的个人理解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="simple">
@@ -260,8 +260,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-18T22:17:16+08:00">
-                2017-10-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-24T22:47:24+08:00">
+                2017-10-24
               </time>
             
 
@@ -298,14 +298,42 @@
       
 
       
-        <p>#HTTP协议</p>
-<p>##</p>
+        <p>===========<br>title: JavaScript闭包和this的个人理解<br>date: 2017-10-24 21:07:25<br>tags: JavaScript</p>
+<h1 id="categories-web开发"><a href="#categories-web开发" class="headerlink" title="categories: web开发"></a>categories: web开发</h1><p>#闭包</p>
+<p>##<br>简单来说 每个函数都可以访问其外围作用域中的所有变量<br>闭包是指一些函数通过某种方式 可以随时被访问 即使它的外部代码已经执行完毕<br>function A（）{function b（）{}}<br>在执行完毕A函数后还能执行b的方法：</p>
 <ol>
-<li>HTTP客户端发起请求，创建端口</li>
-<li>HTTP服务器在端口监听客户端请求</li>
-<li>HTTP服务器向客户端返回状态和内容</li>
-<li></li>
+<li>将b传入setTimeout</li>
+<li>在A中返回b</li>
+<li>将b保存为某个全局变量</li>
 </ol>
+<p>#this<br>This是一个标识符，它需要和值进行绑定，跟变量差不多，但是，在你的代码中，它并不是和某个具体的值进行绑定，而是自动绑定到正确的对象上。一般来说，参数究竟绑定在哪个对象上都是由定位函数参数规则决定的，而定位函数参数和“参数”this的区别则决定了你在调用方法或构造函数时对于谁才是真正绑定的对象的判断<br>，许多人在这方面的理解可以说相当混乱。</p>
+<p>####我用一些不会被this绑定的例子来帮助自己理解。<br>    1.<br>    var fn=function(a,b){<br>        log(this);<br>        }</p>
+<pre><code>2.
+var fn=function(a,b){
+    log(this);
+    }
+var ob2={method: fn};
+
+3.
+var obj={
+var fn=function(a,b){
+    log(this);
+    }
+};
+var ob2={method:obj.fn};
+
+4.
+var obj={
+var fn=function(a,b){
+    log(this);
+    }
+};
+var ob2={method:obj.fn};
+
+obj.fn(3,4);
+</code></pre><p>像这几个例子，如果两个不同对象的属性对对应同一个函数，那么关键词this就会被强制在这两个对象中选择一个，这显然不合理。再进一步想，我们声明关键词this出现在函数中，并且这个函数必须出现在某个对象字面量的花括号中，或其它定义函数的形式中。这样，包含这个函数定义的对象字面量在内存中所创建的对象就由可能时关键词this指代的内容，这是错误的。</p>
+<p>在最后一个例子里面，函数的调用中，函数是作为某个对象的属性被查找的，而.的左边是说明这个函数是在哪个对象中被查找的。在这个函数被调用时，它所查找的这个对象就是关键词this绑定的内容。这个情况下大多数都适用。</p>
+<p>无论如何，存储某一个函数的对象，并不能被认为就是函数中关键词this所指代的内容，也不能认为this最初被定义的对象或函数，就是关键词this指代的内容。事实上，跟它相关的是调用时的点符号（.）以及点符号左边的对象。</p>
 
       
     </div>
@@ -330,7 +358,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/16/JavaScript中的DOM操作/" rel="next" title="">
+              <a href="/2017/10/18/HTTP协议/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -339,10 +367,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/24/JavaScript和this的个人理解/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -394,8 +418,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -439,6 +472,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#categories-web开发"><span class="nav-number">1.</span> <span class="nav-text">categories: web开发</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

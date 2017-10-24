@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -228,6 +228,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/24/JavaScript和this的个人理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="simple">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长梦未央_simple">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/24/JavaScript和this的个人理解/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-24T22:47:24+08:00">
+                2017-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>===========<br>title: JavaScript闭包和this的个人理解<br>date: 2017-10-24 21:07:25<br>tags: JavaScript</p>
+<h1 id="categories-web开发"><a href="#categories-web开发" class="headerlink" title="categories: web开发"></a>categories: web开发</h1><p>#闭包</p>
+<p>##<br>简单来说 每个函数都可以访问其外围作用域中的所有变量<br>闭包是指一些函数通过某种方式 可以随时被访问 即使它的外部代码已经执行完毕<br>function A（）{function b（）{}}<br>在执行完毕A函数后还能执行b的方法：</p>
+<ol>
+<li>将b传入setTimeout</li>
+<li>在A中返回b</li>
+<li>将b保存为某个全局变量</li>
+</ol>
+<p>#this<br>This是一个标识符，它需要和值进行绑定，跟变量差不多，但是，在你的代码中，它并不是和某个具体的值进行绑定，而是自动绑定到正确的对象上。一般来说，参数究竟绑定在哪个对象上都是由定位函数参数规则决定的，而定位函数参数和“参数”this的区别则决定了你在调用方法或构造函数时对于谁才是真正绑定的对象的判断<br>，许多人在这方面的理解可以说相当混乱。</p>
+<p>####我用一些不会被this绑定的例子来帮助自己理解。<br>    1.<br>    var fn=function(a,b){<br>        log(this);<br>        }</p>
+<pre><code>2.
+var fn=function(a,b){
+    log(this);
+    }
+var ob2={method: fn};
+
+3.
+var obj={
+var fn=function(a,b){
+    log(this);
+    }
+};
+var ob2={method:obj.fn};
+
+4.
+var obj={
+var fn=function(a,b){
+    log(this);
+    }
+};
+var ob2={method:obj.fn};
+
+obj.fn(3,4);
+</code></pre><p>像这几个例子，如果两个不同对象的属性对对应同一个函数，那么关键词this就会被强制在这两个对象中选择一个，这显然不合理。再进一步想，我们声明关键词this出现在函数中，并且这个函数必须出现在某个对象字面量的花括号中，或其它定义函数的形式中。这样，包含这个函数定义的对象字面量在内存中所创建的对象就由可能时关键词this指代的内容，这是错误的。</p>
+<p>在最后一个例子里面，函数的调用中，函数是作为某个对象的属性被查找的，而.的左边是说明这个函数是在哪个对象中被查找的。在这个函数被调用时，它所查找的这个对象就是关键词this绑定的内容。这个情况下大多数都适用。</p>
+<p>无论如何，存储某一个函数的对象，并不能被认为就是函数中关键词this所指代的内容，也不能认为this最初被定义的对象或函数，就是关键词this指代的内容。事实上，跟它相关的是调用时的点符号（.）以及点符号左边的对象。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/18/HTTP协议/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -247,7 +402,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/18/HTTP协议/" itemprop="url">Unbenannt</a></h1>
+                <a class="post-title-link" href="/2017/10/18/HTTP协议/" itemprop="url">Untitled</a></h1>
         
 
         <div class="post-meta">
@@ -257,7 +412,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-18T22:17:16+08:00">
                 2017-10-18
@@ -374,7 +529,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/16/JavaScript中的DOM操作/" itemprop="url">Unbenannt</a></h1>
+                <a class="post-title-link" href="/2017/10/16/JavaScript中的DOM操作/" itemprop="url">Untitled</a></h1>
         
 
         <div class="post-meta">
@@ -384,7 +539,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-16T22:43:23+08:00">
                 2017-10-16
@@ -562,7 +717,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T13:10:14+08:00">
                 2017-09-26
@@ -682,7 +837,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T13:06:25+08:00">
                 2017-09-26
@@ -814,8 +969,8 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -867,7 +1022,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
