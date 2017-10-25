@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -228,7 +228,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/24/JavaScript和this的个人理解/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/25/关于原型链的个人理解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="simple">
@@ -247,7 +247,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/24/JavaScript和this的个人理解/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2017/10/25/关于原型链的个人理解/" itemprop="url">关于原型链的个人理解</a></h1>
         
 
         <div class="post-meta">
@@ -257,10 +257,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-24T22:47:24+08:00">
-                2017-10-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-25T17:19:48+08:00">
+                2017-10-25
               </time>
             
 
@@ -269,6 +269,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web开发/" itemprop="url" rel="index">
+                    <span itemprop="name">web开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -299,8 +321,320 @@
       
         
           
-            <p>===========<br>title: JavaScript闭包和this的个人理解<br>date: 2017-10-24 21:07:25<br>tags: JavaScript</p>
-<h1 id="categories-web开发"><a href="#categories-web开发" class="headerlink" title="categories: web开发"></a>categories: web开发</h1><p>#闭包</p>
+            <p>#原型链<br>原型链时创建与其他对象相似的对象的一种机制，当你为了节省内存或避免重复代码，需要两个对象拥有完全相同的属性时，你可能需要从一个对象复制所有的属性到另一个对象，但JavaScript提供了原型链这种替代方式，通过将第一个对象中的字段查找委派于第二个对象的方式，可以使得一个对象表现得似乎拥有另一个对象的所有属性。</p>
+<p><img src="yuanxinglian.png" alt="alt text" title="原型链"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/25/关于this绑定的情况/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="simple">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长梦未央_simple">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/25/关于this绑定的情况/" itemprop="url">关于this绑定的情况</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-25T16:25:36+08:00">
+                2017-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web开发/" itemprop="url" rel="index">
+                    <span itemprop="name">web开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>var fu = function(one,two){
+    log(this,one,two);
+};
+var r={}, g={}, b={}, y={};
+r.method = fn;
+
+1.r.method(g,b);
+
+2.fn(g,b);
+
+3.fn.call(r,g,b);
+
+4.r.method.call(y,g,b);
+
+5.setTimeout(fn,1000);
+
+6.setTimeout(r.method,1000);
+
+7.setTimeout(function(){
+    r.method(g,b);
+},1000);
+</code></pre><p>以上7种情况中：<br>1.通过点符号（.），我们以对象属性的方式调用了该属性所对应的函数，由此也传入了第三个参数，点符号左边的值在这个函数调用中，被自动命名为this</p>
+<p>2.当你没有点符号来为关键词this传入一个具体的绑定时，JavaScript会默认将this绑定为全局对象，这与函数在没有足够输入输入参数的情况下比调用时，JavaScript将undefined绑定到定位参数上是相似的，如果我们没有在括号间传入输入参数，one和two就会被绑定到undefined。类似的，当没有点符号，this将会被绑定到默认的全局对象。</p>
+<p>###点符号是我们为关键词this传入绑定的机制方法，因此，没有点符号，参数this就会被绑定为某些默认的值<br>3.通过使用函数的内置方法.call，我们可以重写默认的全局对象绑定，以及点符号左侧的规则，我们可以传入任何我们想要的值，并将其绑定到关键词this上。在使用方法.call时，我们在参数列表的开头传入了一个额外的值，这个值就会被绑定到参数this上，所以当我们使用函数的属性.call去访问函数时this绑定到了r上。</p>
+<p>4.同3，此时this绑定到了y上。</p>
+<p>5.在setTimeout中调用回调函数，this中绑定到了global上（全局对象）。</p>
+<p>6.尽管这里使用了点符号来传入r对象，因为判断this绑定的位置不是函数定义中，也不是在函数所处的对象中，而是在这个函数被调用的地方，由于我们在红色对象中进行了属性查找，我们常常会认为“查找”这个动作可能和函数中的关键词this有关，但其实在此时它们是不相关的，因为只有在调用的时刻才会影响参数this的绑定。因此this绑定了global上。</p>
+<p>###例子6中，失去绑定的问题很普遍，这是因为任何一个像setTimeout一样将另一个函数作为回调函数的函数在调用函数时，都有可能与你的预期发生偏差。回调函数本很就被设计为由它们被传入的系统调用，因此，你基本无法控制传入的参数最终所绑定的内容，正因如此，你需要对所有的参数绑定都保持谨慎，包括参数this。每当你将一个函数作为输入参数传入另一函数时，尽管在传入函数时，你看到有对象在点符号的左边，但这个对象并不会被传入成为参数this的绑定。<br>7.这种写法可以很好的避免6中的情况，此时this绑定到了r上。</p>
+<p>总结：关键词this使得我们可以仅创建一个函数对象就可以将其作为方法用在一些其它的对象上，每次我们调用该方法时，它可以访问任意使用它的对象，这对于节省内存非常有用，而这都是因为我们能够访问参数this才得以实现。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/24/JavaScript和this的个人理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="simple">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长梦未央_simple">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/24/JavaScript和this的个人理解/" itemprop="url">JavaScript闭包和this的个人理解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-24T21:07:25+08:00">
+                2017-10-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web开发/" itemprop="url" rel="index">
+                    <span itemprop="name">web开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#闭包</p>
 <p>##<br>简单来说 每个函数都可以访问其外围作用域中的所有变量<br>闭包是指一些函数通过某种方式 可以随时被访问 即使它的外部代码已经执行完毕<br>function A（）{function b（）{}}<br>在执行完毕A函数后还能执行b的方法：</p>
 <ol>
 <li>将b传入setTimeout</li>
@@ -402,7 +736,7 @@ obj.fn(3,4);
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/18/HTTP协议/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2017/10/18/HTTP协议/" itemprop="url">Unbenannt</a></h1>
         
 
         <div class="post-meta">
@@ -412,7 +746,7 @@ obj.fn(3,4);
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-18T22:17:16+08:00">
                 2017-10-18
@@ -529,7 +863,7 @@ obj.fn(3,4);
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/16/JavaScript中的DOM操作/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2017/10/16/JavaScript中的DOM操作/" itemprop="url">Unbenannt</a></h1>
         
 
         <div class="post-meta">
@@ -539,7 +873,7 @@ obj.fn(3,4);
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-16T22:43:23+08:00">
                 2017-10-16
@@ -717,7 +1051,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T13:10:14+08:00">
                 2017-09-26
@@ -837,7 +1171,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T13:06:25+08:00">
                 2017-09-26
@@ -969,14 +1303,32 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
             
 
           </nav>
@@ -1022,7 +1374,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
