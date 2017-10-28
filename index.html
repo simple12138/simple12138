@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -228,7 +228,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/27/JavaScript中的伪类模式/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/28/JavaScript中的伪类模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="simple">
@@ -247,7 +247,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/27/JavaScript中的伪类模式/" itemprop="url">JavaScript中的伪类模式</a></h1>
+                <a class="post-title-link" href="/2017/10/28/JavaScript中的伪类模式/" itemprop="url">JavaScript中的伪类模式</a></h1>
         
 
         <div class="post-meta">
@@ -257,10 +257,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-27T19:37:29+08:00">
-                2017-10-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-28T09:46:11+08:00">
+                2017-10-28
               </time>
             
 
@@ -299,7 +299,55 @@
       
         
           
-            <p>###JavaScript中的伪类模式<br>之所以称之为伪类是因为，它仿照其他语言中的类系统，试图增添一些语法上的便利，。如果我们要在程序中构造大量的类，那将会产生大量的重复代码，而语言本身可以通过某种方式，自动的实现一些步骤。</p>
+            <p>###JavaScript中的伪类模式</p>
+<p>继续上篇中我们的例子，拿到的是原型类</p>
+<pre><code>var Car = function(loc) {
+    var obj = Object.create(Car.prototype);
+    obj.loc = loc;
+    return obj;
+};
+Car.prototype.move = function(){
+      this.loc++;
+     };
+</code></pre><p>现在我们把它重构成一种与之相似的模式-伪类模式。称它为伪类，是因为它仿照其他语言中的类系统，试图增添一些语法上的便利，如果我们要在程序中构造大量的类，那将会产生大量的重复代码，而语言本身可以通过某种方式自动实现一些步骤。</p>
+<p>看上面这个列子，你认为哪些代码是每个类都需要的并且有可能通过语言实现自动化的呢？没错，就是这两行</p>
+<pre><code>var obj = Object.create(Car.methods);
+return obj;
+</code></pre><p>每个类都要创建一个对象，并且确保这个对象被委托到原型对象，并且返回这个对象。即这些行为会发生在每一个原型类中。</p>
+<p>为了简化输入JavaScript提供了关键字new ，当我们在一个函数调用前使用关键字new，该函数便会以一种特殊的模式–构造模式来运行。在此模式中，JavaScript可以自动完成这些工作。所谓构造模式，及时指解释器在你的代码中嵌入几行操作代码，因为它知道无论何时实例化一个新对象，你都需要这些被自动完成。它会暂时性的使你的函数运行一些额外的代码，即使你从未输入这些代码。这些被插入的代码基本上与你之前再原型类里写的代码一样，那么因为我们在ben的创建的时候使用了关键字new,所以Car的调用会运行这些被插入在开头和结尾的额外操作。</p>
+<p><img src="/simple12138/simple12138.github.io.git/2017/10/28/JavaScript中的伪类模式/01.png" alt="Alt text"></p>
+<p>而对于amy的创建，我们并没有使用关键字new 在Car调用的前面，所以并不会插入前面的这些代码。所以此时在相同的程序里，这个类函数会以插入或者未被插入这些代码的方式运行。这些插入的代码不会在你的代码中显示。它们只有在调用前面使用关键字new时，作为这种特殊调用的结果才会被执行。但是即使这里展示了两行代码，一行有关键字new，一行没有关键字new，但是你在写程序时不应如此。你应该决定一个函数是使用new关键字，还是不使用new关键字。它的目的是让你跳过一些你已经做的工作。所以如果你决定使用new,就需要再对代码进行一些必要的重构。</p>
+<pre><code>this=Object.create(Car.prototype);
+/*...*/
+return this;
+</code></pre><p>这行代码创建了一个将原型委托在Car.prototype中的对象，并且赋值给this，后面又返回this。这样即使你没有再程序中写出这行代码，解释器也可以把值赋给关键字this。这非常合理，并且与我们理解的关键字this的使用是一致的，关键字this的用途是作为一种便捷的方式去指代一些面向对象函数调用中的任何目标对象，而 var amy = new Car(1); 这个函数的调用就是面向对象的，其目的是构造一个新的对象。这就非常合理，无论新对象是什么，都能成为关键字this指代的目标。因此重构后的代码</p>
+<pre><code>var Car = function(loc) {
+    this = Object.create(Car.prototype);
+    this.loc = loc;
+    return this;
+};
+Car.prototype.move = function(){
+      this.loc++;
+     };
+</code></pre><p>但是需要注意这两行代码只是并不存在的标注，用来告诉我们关键字new做的事情。所以去掉这些标注，我们的代码就变成</p>
+<pre><code>var Car = function(loc) {
+    this.loc = loc;
+};
+Car.prototype.move = function(){
+      this.loc++;
+     };
+
+var amy = new Car(1);
+amy.move();
+var ben= new Car(9);
+ben.move();
+</code></pre><p>这就是构造一个伪类时所需要的代码。</p>
+<p>此时在内存的情况</p>
+<p><img src="/simple12138/simple12138.github.io.git/2017/10/28/JavaScript中的伪类模式/02.png" alt="Alt text"></p>
+<p>这与之前的原型版本并没有本质的区别，因为伪类仅仅是在之前的原型模式之上，为了写代码方便加了薄薄一层语法糖。那么实际上，这两种模式之间的主要区别是JavaScript引擎实现性能优化的数量，而这些优化是伪类模式所独有的。</p>
+<p>我们再来看一下这个代码，这段代码与JS中的其他类模式一样，有两个独立区分的部分，这存在之前的每一个伪类模式、原型模式以及函数共享模式之中。</p>
+<p><img src="/simple12138/simple12138.github.io.git/2017/10/28/JavaScript中的伪类模式/03.png" alt="Alt text"><br>在第2部分，是指定一个类中的所有实例应该相似的部分，在伪类模式中这些相似的部分一般会被存储为prototype对象的属性。在第1部分，你可以指定每个实例和其他实例之间的不同之处。如果大部分语言，这部分写在构造函数体内，它允许我们指定一个类的实例和另一个这个类的实例之间的不同。所有指定的arm和ben不同是的属性loc都是在构造函数内完成的。了解这两部分代码在每一个类中的存在，对于理解子类的概念非常重要。我下一篇会写伪类子类的概念。</p>
+<p>JavaScript中支持多种不同的类模式，那么应该使用哪一种模式或者说哪一种是最好的模式，这么问他并没有答案。作为一门语言，JavaScript并没有鲜明的立场，它更倾向于展现其本质的特征，以便程序员灵活运用。因此并不存在对与错，只是技术和选择上的不同。我们能做的是了解每一种类模式的优点和缺点，来帮我们判断在特定的情况下应该使用哪种模式。</p>
 
           
         
@@ -377,7 +425,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-26T13:43:04+08:00">
                 2017-10-26
@@ -521,7 +569,7 @@ ben.mobe();
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-25T17:19:48+08:00">
                 2017-10-25
@@ -542,7 +590,7 @@ ben.mobe();
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -586,7 +634,7 @@ ben.mobe();
         
           
             <p>#原型链<br>原型链时创建与其他对象相似的对象的一种机制，当你为了节省内存或避免重复代码，需要两个对象拥有完全相同的属性时，你可能需要从一个对象复制所有的属性到另一个对象，但JavaScript提供了原型链这种替代方式，通过将第一个对象中的字段查找委派于第二个对象的方式，可以使得一个对象表现得似乎拥有另一个对象的所有属性。</p>
-<p><img src="yuanxinglian.png" alt="alt text" title="原型链"></p>
+<p><img src="/simple12138/simple12138.github.io.git/2017/10/25/关于原型链的个人理解/yuanxinglian.png" alt="alt text" title="原型链"></p>
 <p>#函数类<br>在JavaScript中，函数是极其重要的，它们是JavaScript类的核心。JavaScript类其实就是一个可以创建许多相似对象的函数。每当一个函数创建多个对象，而它们全都遵从大致相同的方法和属性模式，这个函数就可以被称为类。但是需要了解这个定义实际上也是有争议的，有一些不错的观点，认为不应该将类归结为这么简单的定义，在其它语言中，的确如此。但至少在JavaScript中，这个定义还是对我们最有用。</p>
 
           
@@ -665,7 +713,7 @@ ben.mobe();
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-25T16:25:36+08:00">
                 2017-10-25
@@ -686,7 +734,7 @@ ben.mobe();
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -835,7 +883,7 @@ r.method = fn;
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-24T21:07:25+08:00">
                 2017-10-24
@@ -856,7 +904,7 @@ r.method = fn;
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1001,7 +1049,7 @@ obj.fn(3,4);
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/18/HTTP协议/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2017/10/18/HTTP协议/" itemprop="url">Unbenannt</a></h1>
         
 
         <div class="post-meta">
@@ -1011,7 +1059,7 @@ obj.fn(3,4);
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-18T22:17:16+08:00">
                 2017-10-18
@@ -1128,7 +1176,7 @@ obj.fn(3,4);
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/16/JavaScript中的DOM操作/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2017/10/16/JavaScript中的DOM操作/" itemprop="url">Unbenannt</a></h1>
         
 
         <div class="post-meta">
@@ -1138,7 +1186,7 @@ obj.fn(3,4);
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-16T22:43:23+08:00">
                 2017-10-16
@@ -1316,7 +1364,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T13:10:14+08:00">
                 2017-09-26
@@ -1436,7 +1484,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T13:06:25+08:00">
                 2017-09-26
@@ -1569,7 +1617,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
                 <a href="/archives/">
               
                   <span class="site-state-item-count">9</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -1580,7 +1628,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 </a>
               </div>
             
@@ -1591,7 +1639,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 </a>
               </div>
             
@@ -1639,7 +1687,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
