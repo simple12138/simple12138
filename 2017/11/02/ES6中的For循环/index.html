@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="var fu = function(one,two){     log(this,one,two); }; var r={}, g={}, b={}, y={}; r.method = fn;  1.r.method(g,b);  2.fn(g,b);  3.fn.call(r,g,b);  4.r.method.call(y,g,b);  5.setTimeout(fn,1000);  6.se">
+<meta name="description" content="for…of 循环是最新添加到 JavaScript 循环系列中的循环。 它结合了其兄弟循环形式 for 循环和 for…in 循环的优势，可以循环任何可迭代（也就是遵守可迭代协议）类型的数据。默认情况下，包含以下数据类型：String、Array、Map 和 Set，注意不包含 Object 数据类型（即 {}）。默认情况下，对象不可迭代。 在研究 …of 循环之前，先快速了解下其他 for 循">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于this绑定的情况">
-<meta property="og:url" content="https://github.com/simple12138/simple12138.github.io.git/2017/10/25/关于this绑定的情况/index.html">
+<meta property="og:title" content="ES6中的For循环">
+<meta property="og:url" content="https://github.com/simple12138/simple12138.github.io.git/2017/11/02/ES6中的For循环/index.html">
 <meta property="og:site_name" content="长梦未央_simple">
-<meta property="og:description" content="var fu = function(one,two){     log(this,one,two); }; var r={}, g={}, b={}, y={}; r.method = fn;  1.r.method(g,b);  2.fn(g,b);  3.fn.call(r,g,b);  4.r.method.call(y,g,b);  5.setTimeout(fn,1000);  6.se">
-<meta property="og:updated_time" content="2017-10-25T09:19:21.644Z">
+<meta property="og:description" content="for…of 循环是最新添加到 JavaScript 循环系列中的循环。 它结合了其兄弟循环形式 for 循环和 for…in 循环的优势，可以循环任何可迭代（也就是遵守可迭代协议）类型的数据。默认情况下，包含以下数据类型：String、Array、Map 和 Set，注意不包含 Object 数据类型（即 {}）。默认情况下，对象不可迭代。 在研究 …of 循环之前，先快速了解下其他 for 循">
+<meta property="og:updated_time" content="2017-11-02T15:12:31.847Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于this绑定的情况">
-<meta name="twitter:description" content="var fu = function(one,two){     log(this,one,two); }; var r={}, g={}, b={}, y={}; r.method = fn;  1.r.method(g,b);  2.fn(g,b);  3.fn.call(r,g,b);  4.r.method.call(y,g,b);  5.setTimeout(fn,1000);  6.se">
+<meta name="twitter:title" content="ES6中的For循环">
+<meta name="twitter:description" content="for…of 循环是最新添加到 JavaScript 循环系列中的循环。 它结合了其兄弟循环形式 for 循环和 for…in 循环的优势，可以循环任何可迭代（也就是遵守可迭代协议）类型的数据。默认情况下，包含以下数据类型：String、Array、Map 和 Set，注意不包含 Object 数据类型（即 {}）。默认情况下，对象不可迭代。 在研究 …of 循环之前，先快速了解下其他 for 循">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/25/关于this绑定的情况/"/>
+  <link rel="canonical" href="https://github.com/simple12138/simple12138.github.io.git/2017/11/02/ES6中的For循环/"/>
 
 
 
 
 
-  <title>关于this绑定的情况 | 长梦未央_simple</title>
+  <title>ES6中的For循环 | 长梦未央_simple</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/10/25/关于this绑定的情况/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/11/02/ES6中的For循环/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="simple">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于this绑定的情况</h1>
+          <h1 class="post-title" itemprop="name headline">ES6中的For循环</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-25T16:25:36+08:00">
-                2017-10-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-02T22:18:16+08:00">
+                2017-11-02
               </time>
             
 
@@ -271,28 +271,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web开发/" itemprop="url" rel="index">
-                    <span itemprop="name">web开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -321,35 +299,71 @@
       
 
       
-        <pre><code>var fu = function(one,two){
-    log(this,one,two);
+        <p>for…of 循环是最新添加到 JavaScript 循环系列中的循环。</p>
+<p>它结合了其兄弟循环形式 for 循环和 for…in 循环的优势，可以循环任何可迭代（也就是遵守可迭代协议）类型的数据。默认情况下，包含以下数据类型：String、Array、Map 和 Set，注意不包含 Object 数据类型（即 {}）。默认情况下，对象不可迭代。</p>
+<p>在研究 …of 循环之前，先快速了解下其他 for 循环，看看它们有哪些不足之处。</p>
+<p>for 循环<br>for 循环很明显是最常见的循环类型，因此快速复习下即可。</p>
+<pre><code>const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+for (let i = 0; i &lt; digits.length; i++) {
+  console.log(digits[i]);
+}
+</code></pre><p>Prints:<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>for 循环的最大缺点是需要跟踪计数器和退出条件。</p>
+<p>在此示例中，我们使用变量 i 作为计数器来跟踪循环并访问数组中的值。我们还使用 digits.length 来判断循环的退出条件。如果只看一眼这段代码，有时候会比较困惑，尤其是对于初学者而言。</p>
+<p>虽然 for 循环在循环数组时的确具有优势，但是某些数据结构不是数组，因此并非始终适合使用 loop 循环。</p>
+<p>for…in 循环<br>for…in 循环改善了 for 循环的不足之处，它消除了计数器逻辑和退出条件。</p>
+<pre><code>const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+for (const index in digits) {
+  console.log(digits[index]);
+}
+</code></pre><p>Prints:<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>但是依然需要使用 index 来访问数组的值，这样很麻烦；几乎比之前更让人迷惑。</p>
+<p>此外，当你需要向数组中添加额外的方法（或另一个对象）时，for…in 循环会带来很大的麻烦。因为 for…in 循环循环访问所有可枚举的属性，意味着如果向数组的原型中添加任何其他属性，这些属性也会出现在循环中。</p>
+<pre><code>Array.prototype.decimalfy = function() {
+  for (let i = 0; i &lt; this.length; i++) {
+    this[i] = this[i].toFixed(2);
+  }
 };
-var r={}, g={}, b={}, y={};
-r.method = fn;
 
-1.r.method(g,b);
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-2.fn(g,b);
+for (const index in digits) {
+  console.log(digits[index]);
+}
+</code></pre><p>Prints:<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>function() {<br> for (let i = 0; i &lt; this.length; i++) {<br>  this[i] = this[i].toFixed(2);<br> }<br>}<br>太可怕！这就是为何在循环访问数组时，不建议使用 for…in 循环。</p>
+<p>注意： forEach 循环 是另一种形式的 JavaScript 循环。但是，forEach() 实际上是数组方法，因此只能用在数组中。也无法停止或退出 forEach 循环。如果希望你的循环中出现这种行为，则需要使用基本的 for 循环。<br>最后，我们要提到强大的…of 循环了。</p>
+<p>For…of 循环<br>for…of 循环用于循环访问任何可迭代的数据类型。</p>
+<p>for…of 循环的编写方式和 for…in 循环的基本一样，只是将 in 替换为 of，可以忽略索引。</p>
+<pre><code>const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-3.fn.call(r,g,b);
+for (const digit of digits) {
+  console.log(digit);
+}
+</code></pre><p>Prints:<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>这使得 for…of 循环成为所有 for 循环中最简洁的版本。</p>
+<p>提示：建议使用复数对象名称来表示多个值的集合。这样，循环该集合时，可以使用名称的单数版本来表示集合中的单个值。例如，for (const button of buttons) {…}。</p>
+<p>从 for 循环完善为 for…in 循环，再完善为 for…of 循环。<br>但是等等，还有更多优势！for…of 循环还具有其他优势，解决了 for 和 for…in 循环的不知之处。</p>
+<p>你可以随时停止或退出 for…of 循环。</p>
+<pre><code>const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-4.r.method.call(y,g,b);
+for (const digit of digits) {
+  if (digit % 2 === 0) {
+    continue;
+  }
+  console.log(digit);
+}
+</code></pre><p>Prints:<br>1<br>3<br>5<br>7<br>9<br>不用担心向对象中添加新的属性。for…of 循环将只循环访问对象中的值。</p>
+<pre><code>Array.prototype.decimalfy = function() {
+  for (i = 0; i &lt; this.length; i++) {
+    this[i] = this[i].toFixed(2);
+  }
+};
 
-5.setTimeout(fn,1000);
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-6.setTimeout(r.method,1000);
-
-7.setTimeout(function(){
-    r.method(g,b);
-},1000);
-</code></pre><p>以上7种情况中：<br>1.通过点符号（.），我们以对象属性的方式调用了该属性所对应的函数，由此也传入了第三个参数，点符号左边的值在这个函数调用中，被自动命名为this</p>
-<p>2.当你没有点符号来为关键词this传入一个具体的绑定时，JavaScript会默认将this绑定为全局对象，这与函数在没有足够输入输入参数的情况下比调用时，JavaScript将undefined绑定到定位参数上是相似的，如果我们没有在括号间传入输入参数，one和two就会被绑定到undefined。类似的，当没有点符号，this将会被绑定到默认的全局对象。</p>
-<p>###点符号是我们为关键词this传入绑定的机制方法，因此，没有点符号，参数this就会被绑定为某些默认的值<br>3.通过使用函数的内置方法.call，我们可以重写默认的全局对象绑定，以及点符号左侧的规则，我们可以传入任何我们想要的值，并将其绑定到关键词this上。在使用方法.call时，我们在参数列表的开头传入了一个额外的值，这个值就会被绑定到参数this上，所以当我们使用函数的属性.call去访问函数时this绑定到了r上。</p>
-<p>4.同3，此时this绑定到了y上。</p>
-<p>5.在setTimeout中调用回调函数，this中绑定到了global上（全局对象）。</p>
-<p>6.尽管这里使用了点符号来传入r对象，因为判断this绑定的位置不是函数定义中，也不是在函数所处的对象中，而是在这个函数被调用的地方，由于我们在红色对象中进行了属性查找，我们常常会认为“查找”这个动作可能和函数中的关键词this有关，但其实在此时它们是不相关的，因为只有在调用的时刻才会影响参数this的绑定。因此this绑定了global上。</p>
-<p>###例子6中，失去绑定的问题很普遍，这是因为任何一个像setTimeout一样将另一个函数作为回调函数的函数在调用函数时，都有可能与你的预期发生偏差。回调函数本很就被设计为由它们被传入的系统调用，因此，你基本无法控制传入的参数最终所绑定的内容，正因如此，你需要对所有的参数绑定都保持谨慎，包括参数this。每当你将一个函数作为输入参数传入另一函数时，尽管在传入函数时，你看到有对象在点符号的左边，但这个对象并不会被传入成为参数this的绑定。<br>7.这种写法可以很好的避免6中的情况，此时this绑定到了r上。</p>
-<p>总结：关键词this使得我们可以仅创建一个函数对象就可以将其作为方法用在一些其它的对象上，每次我们调用该方法时，它可以访问任意使用它的对象，这对于节省内存非常有用，而这都是因为我们能够访问参数this才得以实现。</p>
+for (const digit of digits) {
+  console.log(digit);
+}
+</code></pre><p>Prints:<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</p>
 
       
     </div>
@@ -380,8 +394,8 @@ r.method = fn;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/24/JavaScript和this的个人理解/" rel="next" title="JavaScript闭包和this的个人理解">
-                <i class="fa fa-chevron-left"></i> JavaScript闭包和this的个人理解
+              <a href="/2017/11/02/对象字面量简写法/" rel="next" title="对象字面量简写法">
+                <i class="fa fa-chevron-left"></i> 对象字面量简写法
               </a>
             
           </div>
@@ -389,10 +403,6 @@ r.method = fn;
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/25/关于原型链的个人理解/" rel="prev" title="关于原型链和函数类的个人理解和">
-                关于原型链和函数类的个人理解和 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

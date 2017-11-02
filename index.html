@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -214,6 +214,344 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/11/02/ES6中的For循环/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="simple">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长梦未央_simple">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/02/ES6中的For循环/" itemprop="url">ES6中的For循环</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-02T22:18:16+08:00">
+                2017-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>for…of 循环是最新添加到 JavaScript 循环系列中的循环。</p>
+<p>它结合了其兄弟循环形式 for 循环和 for…in 循环的优势，可以循环任何可迭代（也就是遵守可迭代协议）类型的数据。默认情况下，包含以下数据类型：String、Array、Map 和 Set，注意不包含 Object 数据类型（即 {}）。默认情况下，对象不可迭代。</p>
+<p>在研究 …of 循环之前，先快速了解下其他 for 循环，看看它们有哪些不足之处。</p>
+<p>for 循环<br>for 循环很明显是最常见的循环类型，因此快速复习下即可。</p>
+<pre><code>const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+for (let i = 0; i &lt; digits.length; i++) {
+  console.log(digits[i]);
+}
+</code></pre><p>Prints:<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>for 循环的最大缺点是需要跟踪计数器和退出条件。</p>
+<p>在此示例中，我们使用变量 i 作为计数器来跟踪循环并访问数组中的值。我们还使用 digits.length 来判断循环的退出条件。如果只看一眼这段代码，有时候会比较困惑，尤其是对于初学者而言。</p>
+<p>虽然 for 循环在循环数组时的确具有优势，但是某些数据结构不是数组，因此并非始终适合使用 loop 循环。</p>
+<p>for…in 循环<br>for…in 循环改善了 for 循环的不足之处，它消除了计数器逻辑和退出条件。</p>
+<pre><code>const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+for (const index in digits) {
+  console.log(digits[index]);
+}
+</code></pre><p>Prints:<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>但是依然需要使用 index 来访问数组的值，这样很麻烦；几乎比之前更让人迷惑。</p>
+<p>此外，当你需要向数组中添加额外的方法（或另一个对象）时，for…in 循环会带来很大的麻烦。因为 for…in 循环循环访问所有可枚举的属性，意味着如果向数组的原型中添加任何其他属性，这些属性也会出现在循环中。</p>
+<pre><code>Array.prototype.decimalfy = function() {
+  for (let i = 0; i &lt; this.length; i++) {
+    this[i] = this[i].toFixed(2);
+  }
+};
+
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+for (const index in digits) {
+  console.log(digits[index]);
+}
+</code></pre><p>Prints:<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>function() {<br> for (let i = 0; i &lt; this.length; i++) {<br>  this[i] = this[i].toFixed(2);<br> }<br>}<br>太可怕！这就是为何在循环访问数组时，不建议使用 for…in 循环。</p>
+<p>注意： forEach 循环 是另一种形式的 JavaScript 循环。但是，forEach() 实际上是数组方法，因此只能用在数组中。也无法停止或退出 forEach 循环。如果希望你的循环中出现这种行为，则需要使用基本的 for 循环。<br>最后，我们要提到强大的…of 循环了。</p>
+<p>For…of 循环<br>for…of 循环用于循环访问任何可迭代的数据类型。</p>
+<p>for…of 循环的编写方式和 for…in 循环的基本一样，只是将 in 替换为 of，可以忽略索引。</p>
+<pre><code>const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+for (const digit of digits) {
+  console.log(digit);
+}
+</code></pre><p>Prints:<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>这使得 for…of 循环成为所有 for 循环中最简洁的版本。</p>
+<p>提示：建议使用复数对象名称来表示多个值的集合。这样，循环该集合时，可以使用名称的单数版本来表示集合中的单个值。例如，for (const button of buttons) {…}。</p>
+<p>从 for 循环完善为 for…in 循环，再完善为 for…of 循环。<br>但是等等，还有更多优势！for…of 循环还具有其他优势，解决了 for 和 for…in 循环的不知之处。</p>
+<p>你可以随时停止或退出 for…of 循环。</p>
+<pre><code>const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+for (const digit of digits) {
+  if (digit % 2 === 0) {
+    continue;
+  }
+  console.log(digit);
+}
+</code></pre><p>Prints:<br>1<br>3<br>5<br>7<br>9<br>不用担心向对象中添加新的属性。for…of 循环将只循环访问对象中的值。</p>
+<pre><code>Array.prototype.decimalfy = function() {
+  for (i = 0; i &lt; this.length; i++) {
+    this[i] = this[i].toFixed(2);
+  }
+};
+
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+for (const digit of digits) {
+  console.log(digit);
+}
+</code></pre><p>Prints:<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/11/02/对象字面量简写法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="simple">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长梦未央_simple">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/02/对象字面量简写法/" itemprop="url">对象字面量简写法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-02T19:56:45+08:00">
+                2017-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>ES6 中经常出现的一个现象是删掉不必要的重复代码。通过删掉不必要的重复代码，代码更容易读懂，并且更简练。推出的新简写法（用来初始化对象并向对象中添加方法）就是这一体现。</p>
+<p>我们看看具体情况。</p>
+<p>对象字面量简写法<br>你可能写过这样的代码：使用和所分配的变量名称相同的名称初始化对象。</p>
+<p>如果没写过的话，看看下面的示例。</p>
+<pre><code>let type = &apos;quartz&apos;;
+let color = &apos;rose&apos;;
+let carat = 21.29;
+
+const gemstone = {
+  type: type,
+  color: color,
+  carat: carat
+};
+
+console.log(gemstone);
+Prints: Object {type: &quot;quartz&quot;, color: &quot;rose&quot;, carat: 21.29}
+</code></pre><p>看到重复的地方了吗？type: type、color: color 和 carat:carat 不显得很冗长吗？</p>
+<p>好消息是，如果属性名称和所分配的变量名称一样，那么就可以从对象属性中删掉这些重复的变量名称。</p>
+<p>我们来看看！</p>
+<p>如果对象属性的名称和所分配的变量的名称相同，则可以删掉重复的变量名称。<br>说到简写法，还有一种向对象中添加方法的简写方式。</p>
+<p>要看看具体写法，我们先向 gemstone 对象添加 calculateWorth() 方法。calculateWorth() 方法将根据宝石的 type、color 和 carat 告诉我们宝石成本多少。</p>
+<pre><code>let type = &apos;quartz&apos;;
+let color = &apos;rose&apos;;
+let carat = 21.29;
+
+const gemstone = {
+  type,
+  color,
+  carat,
+  calculateWorth: function() {
+    // will calculate worth of gemstone based on type, color, and carat
+  }
+};
+</code></pre><p>在此示例中，匿名函数被分配给属性 calculateWorth，但是真的需要 function 关键字吗？在 ES6 中不需要！</p>
+<p>简写方法名称<br>因为只需引用 gemstone 的 calculateWorth 属性以便调用该函数，因此关键字 function 是多余的，可以删掉。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">let gemstone = &#123;</div><div class="line">  type,</div><div class="line">  color,</div><div class="line">  carat,</div><div class="line">  calculateWorth() &#123; ... &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -257,7 +595,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-28T09:46:11+08:00">
                 2017-10-28
@@ -425,7 +763,7 @@ ben.move();
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-26T13:43:04+08:00">
                 2017-10-26
@@ -569,7 +907,7 @@ ben.mobe();
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-25T17:19:48+08:00">
                 2017-10-25
@@ -590,7 +928,7 @@ ben.mobe();
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -713,7 +1051,7 @@ ben.mobe();
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-25T16:25:36+08:00">
                 2017-10-25
@@ -734,7 +1072,7 @@ ben.mobe();
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -883,7 +1221,7 @@ r.method = fn;
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-24T21:07:25+08:00">
                 2017-10-24
@@ -904,7 +1242,7 @@ r.method = fn;
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1049,7 +1387,7 @@ obj.fn(3,4);
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/18/HTTP协议/" itemprop="url">Unbenannt</a></h1>
+                <a class="post-title-link" href="/2017/10/18/HTTP协议/" itemprop="url">Untitled</a></h1>
         
 
         <div class="post-meta">
@@ -1059,7 +1397,7 @@ obj.fn(3,4);
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-18T22:17:16+08:00">
                 2017-10-18
@@ -1176,7 +1514,7 @@ obj.fn(3,4);
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/16/JavaScript中的DOM操作/" itemprop="url">Unbenannt</a></h1>
+                <a class="post-title-link" href="/2017/10/16/JavaScript中的DOM操作/" itemprop="url">Untitled</a></h1>
         
 
         <div class="post-meta">
@@ -1186,7 +1524,7 @@ obj.fn(3,4);
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-16T22:43:23+08:00">
                 2017-10-16
@@ -1364,7 +1702,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T13:10:14+08:00">
                 2017-09-26
@@ -1442,137 +1780,13 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/09/26/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="simple">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="长梦未央_simple">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/26/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T13:06:25+08:00">
-                2017-09-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1616,8 +1830,8 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -1628,7 +1842,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">Kategorien</span>
+                  <span class="site-state-item-name">categories</span>
                 </a>
               </div>
             
@@ -1639,7 +1853,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 </a>
               </div>
             
@@ -1687,7 +1901,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
