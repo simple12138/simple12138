@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -214,6 +214,146 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/11/03/ES6中的展开运算符/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="simple">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="长梦未央_simple">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/03/ES6中的展开运算符/" itemprop="url">ES6中的展开运算符</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-03T08:10:47+08:00">
+                2017-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>展开运算符<br>展开运算符（用三个连续的点 ( … ) 表示）是 ES6 中的新概念，使你能够将字面量对象展开为多个元素。</p>
+<p>我们通过几个示例看看它的原理。</p>
+<pre><code>const books = [&quot;Don Quixote&quot;, &quot;The Hobbit&quot;, 
+&quot;Alice in Wonderland&quot;, &quot;Tale of Two Cities&quot;];
+console.log(...books);
+Prints: Don Quixote The Hobbit Alice in Wonderland Tale of Two Cities
+const primes = new Set([2, 3, 5, 7, 11, 13, 17, 19, 23, 29]);
+console.log(...primes);
+</code></pre><p>Prints: 2 3 5 7 11 13 17 19 23 29<br>如果查看上述示例的输出，会发现数组和集合都扩展开了单个元素。这有什么用？</p>
+<p>注意：集合是 ES6 中的全新内置对象。我们将在第 3 节课详细讲解集合。<br>使用 concat 方法结合数组<br>展开运算符的一个用途是结合数组。</p>
+<p>如果你需要结合多个数组，在有展开运算符之前，必须使用 Array 的 concat() 方法。</p>
+<pre><code>const fruits = [&quot;apples&quot;, &quot;bananas&quot;, &quot;pears&quot;];
+const vegetables = [&quot;corn&quot;, &quot;potatoes&quot;, &quot;carrots&quot;];
+const produce = fruits.concat(vegetables);
+console.log(produce);
+Prints: [&quot;apples&quot;, &quot;bananas&quot;, &quot;pears&quot;, &quot;corn&quot;, &quot;potatoes&quot;, &quot;carrots&quot;]
+</code></pre><p>并不算太糟糕，但是如果有简写方法，会不会更好？</p>
+<p>例如，如下所示…</p>
+<p>⚠️ 接下来会出现 const 警告 ⚠️<br>如果你通过复制/粘贴代码跟着操作，那么你已经使用 const 关键字声明了 produce 变量。以下代码将尝试重新声明变量并对其重新赋值，因此可能会出现错误，取决于你运行代码的方式。</p>
+<p>注意，使用 const 声明的变量不能在同一作用域内重新声明或重新赋值。<br>    const produce = [fruits, vegetables];<br>    console.log(produce);<br>    Prints: [Array[3], Array[3]]<br>遗憾的是，不可行。</p>
+<p>这段代码实际上将 fruits 数组添加到 produce 数组的第一个索引处，将 vegetables 数组添加到第二个索引处。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -257,7 +397,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-02T22:18:16+08:00">
                 2017-11-02
@@ -441,7 +581,7 @@ for (const digit of digits) {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-02T19:56:45+08:00">
                 2017-11-02
@@ -595,7 +735,7 @@ const gemstone = {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-28T09:46:11+08:00">
                 2017-10-28
@@ -763,7 +903,7 @@ ben.move();
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-26T13:43:04+08:00">
                 2017-10-26
@@ -907,7 +1047,7 @@ ben.mobe();
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-25T17:19:48+08:00">
                 2017-10-25
@@ -928,7 +1068,7 @@ ben.mobe();
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1051,7 +1191,7 @@ ben.mobe();
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-25T16:25:36+08:00">
                 2017-10-25
@@ -1072,7 +1212,7 @@ ben.mobe();
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1221,7 +1361,7 @@ r.method = fn;
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-24T21:07:25+08:00">
                 2017-10-24
@@ -1242,7 +1382,7 @@ r.method = fn;
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -1387,7 +1527,7 @@ obj.fn(3,4);
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/18/HTTP协议/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2017/10/18/HTTP协议/" itemprop="url">Unbenannt</a></h1>
         
 
         <div class="post-meta">
@@ -1397,7 +1537,7 @@ obj.fn(3,4);
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-18T22:17:16+08:00">
                 2017-10-18
@@ -1514,7 +1654,7 @@ obj.fn(3,4);
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/16/JavaScript中的DOM操作/" itemprop="url">Untitled</a></h1>
+                <a class="post-title-link" href="/2017/10/16/JavaScript中的DOM操作/" itemprop="url">Unbenannt</a></h1>
         
 
         <div class="post-meta">
@@ -1524,7 +1664,7 @@ obj.fn(3,4);
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-16T22:43:23+08:00">
                 2017-10-16
@@ -1660,126 +1800,6 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://github.com/simple12138/simple12138.github.io.git/2017/09/26/Hello/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="simple">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="长梦未央_simple">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/26/Hello/" itemprop="url">Hello</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T13:10:14+08:00">
-                2017-09-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>撒旦撒旦撒旦撒</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1830,8 +1850,8 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -1842,7 +1862,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">Kategorien</span>
                 </a>
               </div>
             
@@ -1853,7 +1873,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 </a>
               </div>
             
@@ -1901,7 +1921,7 @@ alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);//输出列表中tbody中的�
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
