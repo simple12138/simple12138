@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        fi3ework&#39;s Studio
+        this和箭头函数 · fi3ework&#39;s Studio
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -63,7 +63,7 @@
                 <a href="/" >fi3ework&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name"></a>
+                <a href="#" class="post-name">this和箭头函数</a>
             </div>
     </div>
     
@@ -84,7 +84,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            [Untitled Post]
+            this和箭头函数
             <!-- 404 -->
             
         </h1>
@@ -102,7 +102,7 @@
             
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2017/10/18</span>
+                <span class="post-intro-time">2017/11/03</span>
             </div>
         
     </div>
@@ -173,31 +173,115 @@
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>#HTTP协议</p>
-<p>##</p>
-<ol>
-<li>HTTP客户端发起请求，创建端口</li>
-<li>HTTP服务器在端口监听客户端请求</li>
-<li>HTTP服务器向客户端返回状态和内容</li>
-<li></li>
-</ol>
+        <p>对于普通函数，this 的值基于函数如何被调用。对于箭头函数，this 的值基于函数周围的上下文。换句话说，箭头函数内的，this 的值与函数外面的 this 的值一样。</p>
+<p>我们先看一个普通函数中的 this 示例，再看一个箭头函数是如何使用 this 的。</p>
+<pre><code>// constructor
+function IceCream() {
+  this.scoops = 0;
+}
+
+// adds scoop to ice cream
+IceCream.prototype.addScoop = function() {
+  setTimeout(function() {
+    this.scoops++;
+    console.log(&apos;scoop added!&apos;);
+  }, 500);
+};
+
+const dessert = new IceCream();
+dessert.addScoop();
+
+
+Prints:
+scoop added!
+</code></pre><p>运行上述代码后，你会认为半毫秒之后，dessert.scoops 会是1。但并非这样：</p>
+<pre><code>console.log(dessert.scoops);
+
+Prints:
+0
+</code></pre><p>####能说说原因吗？</p>
+<p>传递给 setTimeout() 的函数被调用时没用到 new、call() 或 apply()，也没用到上下文对象。意味着函数内的 this 的值是全局对象，不是 dessert 对象。实际上发生的情况是，创建了新的 scoops 变量（默认值为 undefined），然后递增（undefined + 1 结果为 NaN）：</p>
+<pre><code>console.log(scoops);
+
+Prints:
+NaN
+</code></pre><p>解决这个问题的方法之一是使用闭包：</p>
+<pre><code>// constructor
+function IceCream() {
+  this.scoops = 0;
+}
+
+// adds scoop to ice cream
+IceCream.prototype.addScoop = function() {
+  const cone = this; // sets `this` to the `cone` variable
+  setTimeout(function() {
+    cone.scoops++; // references the `cone` variable
+    console.log(&apos;scoop added!&apos;);
+  }, 0.5);
+};
+
+const dessert = new IceCream();
+dessert.addScoop();
+</code></pre><p>上述代码将可行，因为它没有在函数内使用 this，而是将 cone 变量设为 this，然后当函数被调用时查找 cone 变量。这样可行，因为使用了函数外面的 this 值。如果现在查看甜点中的勺子数量，正确值将为 1：</p>
+<pre><code>console.log(dessert.scoops);
+
+Prints:
+1
+</code></pre><p>这正是箭头函数的作用，我们将传递给 setTimeout() 的函数替换为箭头函数：</p>
+<pre><code>// constructor
+function IceCream() {
+  this.scoops = 0;
+}
+
+// adds scoop to ice cream
+IceCream.prototype.addScoop = function() {
+  setTimeout(() =&gt; { // an arrow function is passed to setTimeout
+    this.scoops++;
+    console.log(&apos;scoop added!&apos;);
+  }, 0.5);
+};
+
+const dessert = new IceCream();
+dessert.addScoop();
+</code></pre><p>因为箭头函数从周围上下文继承了 this 值，所以这段代码可行！</p>
+<pre><code>console.log(dessert.scoops);
+Prints:
+1
+</code></pre><p>当 addScoop() 被调用时，addScoop() 中的 this 的值指的是 dessert。因为箭头函数被传递给 setTimeout()，它使用周围上下文判断它里面的 this 指的是什么。因为箭头函数外面的 this 指的是 dessert，所以箭头函数里面的 this 的值也将是 dessert。</p>
+<p>如果我们将 addScoop() 方法改为箭头函数，你认为会发生什么？</p>
+<pre><code>// constructor
+function IceCream() {
+    this.scoops = 0;
+}
+
+// adds scoop to ice cream
+IceCream.prototype.addScoop = () =&gt; { // addScoop is now an arrow function
+  setTimeout(() =&gt; {
+    this.scoops++;
+    console.log(&apos;scoop added!&apos;);
+  }, 0.5);
+};
+
+const dessert = new IceCream();
+dessert.addScoop();
+</code></pre><p>是的，这段代码因为同一原因而不起作用，即箭头函数从周围上下文中继承了 this 值。在 addScoop() 方法外面，this 的值是全局对象。因此如果 addScoop() 是箭头函数，addScoop() 中的 this 的值是全局对象。这样的话，传递给 setTimeout() 的函数中的 this 的值也设为了该全局对象！</p>
 
     </article>
     <!-- 前后页  -->
     <ul class="post-pager">
         
             <li class="next">
-                <a href= "/2017/10/24/JavaScript和this的个人理解/" title= JavaScript闭包和this的个人理解 >
+                <a href= "/2017/11/03/ES6中的默默认值和解构/" title= ES6中的默默认值和解构 >
                     <span>Next Post</span>
-                    <span>JavaScript闭包和this的个人理解</span>
+                    <span>ES6中的默默认值和解构</span>
                 </a>
             </li>
         
         
             <li class="previous">
-                <a href= "/2017/10/16/JavaScript中的DOM操作/" title=  >
+                <a href= "/2017/11/03/this和普通函数/" title= this和普通函数 >
                     <span>Previous Post</span>
-                    <span>[Untitled Post]</span>
+                    <span>this和普通函数</span>
                 </a>
             </li>
         

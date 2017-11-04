@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        fi3ework&#39;s Studio
+        ES6中的super和extends · fi3ework&#39;s Studio
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -63,7 +63,7 @@
                 <a href="/" >fi3ework&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name"></a>
+                <a href="#" class="post-name">ES6中的super和extends</a>
             </div>
     </div>
     
@@ -84,7 +84,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            [Untitled Post]
+            ES6中的super和extends
             <!-- 404 -->
             
         </h1>
@@ -102,7 +102,7 @@
             
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2017/10/18</span>
+                <span class="post-intro-time">2017/11/03</span>
             </div>
         
     </div>
@@ -173,31 +173,110 @@
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>#HTTP协议</p>
-<p>##</p>
-<ol>
-<li>HTTP客户端发起请求，创建端口</li>
-<li>HTTP服务器在端口监听客户端请求</li>
-<li>HTTP服务器向客户端返回状态和内容</li>
-<li></li>
-</ol>
+        <p>ES6 中的子类<br>我们已经了解了如何在 JavaScript 中创建类。现在使用新的 super 和 extends 关键字扩展类。</p>
+<pre><code>class Tree {
+  constructor(size = &apos;10&apos;, leaves = {spring: &apos;green&apos;, summer: &apos;green&apos;, fall: &apos;orange&apos;, winter: null}) {
+    this.size = size;
+    this.leaves = leaves;
+    this.leafColor = null;
+  }
 
+  changeSeason(season) {
+    this.leafColor = this.leaves[season];
+    if (season === &apos;spring&apos;) {
+      this.size += 1;
+    }
+  }
+}
+
+class Maple extends Tree {
+  constructor(syrupQty = 15, size, barkColor, leaves) {
+    super(size, barkColor, leaves);
+    this.syrupQty = syrupQty;
+  }
+
+  changeSeason(season) {
+    super.changeSeason(season);
+    if (season === &apos;spring&apos;) {
+      this.syrupQty += 1;
+    }
+  }
+
+  gatherSyrup() {
+    this.syrupQty -= 3;
+  }
+}
+
+const myMaple = new Maple(15, 5);
+myMaple.changeSeason(&apos;fall&apos;);
+myMaple.gatherSyrup();
+myMaple.changeSeason(&apos;spring&apos;);
+</code></pre><p>Tree 和 Maple 都是 JavaScript 类。Maple 类是 Tree 的子类，并使用关键字 extends 将自己设为子类。要让子类可以访问到父类，需要使用关键字 super。注意到 super 有两种使用方式吗？在 Maple 的构造方法中，super 被用作函数。在 Maple 的changeSeason() 方法中，super 被用作对象！</p>
+<p>与 ES5 子类对比<br>我们看看用 ES5 编写相同功能的代码：</p>
+<pre><code>function Tree() {
+  this.size = size || 10;
+  this.leaves = leaves || {spring: &apos;green&apos;, summer: &apos;green&apos;, fall: &apos;orange&apos;, winter: null};
+  this.leafColor;
+}
+
+Tree.prototype.changeSeason = function(season) {
+  this.leafColor = this.leaves[season];
+  if (season === &apos;spring&apos;) {
+    this.size += 1;
+  }
+}
+
+function Maple (syrupQty, size, barkColor, leaves) {
+  Tree.call(this, size, barkColor, leaves);
+  this.syrupQty = syrupQty || 15;
+}
+
+Maple.prototype = Object.create(Tree.prototype);
+Maple.prototype.constructor = Maple;
+
+Maple.prototype.changeSeason = function(season) {
+  Tree.prototype.changeSeason.call(this, season);
+  if (season === &apos;spring&apos;) {
+    this.syrupQty += 1;
+  }
+}
+
+Maple.prototype.gatherSyrup = function() {
+  this.syrupQty -= 3;
+}
+
+const myMaple = new Maple(15, 5);
+myMaple.changeSeason(&apos;fall&apos;);
+myMaple.gatherSyrup();
+myMaple.changeSeason(&apos;spring&apos;);
+</code></pre><p>这段代码和上面的类风格的代码都实现了相同的功能。</p>
+<p>#使用子类<br>像大多数新增加的特性，使用 class、super 和 extends 创建子类时设置代码少了很多，语法更清晰。</p>
+<p>只需记住，在底层，函数和原型之间的连接是一样的。</p>
+<p>super 必须在 this 之前被调用<br>在子类构造函数中，在使用 this 之前，必须先调用超级类。</p>
+<pre><code>class Apple {}
+class GrannySmith extends Apple {
+  constructor(tartnessLevel, energy) {
+    this.tartnessLevel = tartnessLevel; // `this` before `super` will throw an error!
+    super(energy); 
+  }
+}
+</code></pre>
     </article>
     <!-- 前后页  -->
     <ul class="post-pager">
         
             <li class="next">
-                <a href= "/2017/10/24/JavaScript和this的个人理解/" title= JavaScript闭包和this的个人理解 >
+                <a href= "/2017/11/03/ES6中的Symbol/" title= ES6中的Symbol >
                     <span>Next Post</span>
-                    <span>JavaScript闭包和this的个人理解</span>
+                    <span>ES6中的Symbol</span>
                 </a>
             </li>
         
         
             <li class="previous">
-                <a href= "/2017/10/16/JavaScript中的DOM操作/" title=  >
+                <a href= "/2017/11/03/ES5中JavaScript的类/" title= ES5中JavaScript的类 >
                     <span>Previous Post</span>
-                    <span>[Untitled Post]</span>
+                    <span>ES5中JavaScript的类</span>
                 </a>
             </li>
         

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        fi3ework&#39;s Studio
+        ES6中的默默认值和解构 · fi3ework&#39;s Studio
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -63,7 +63,7 @@
                 <a href="/" >fi3ework&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name"></a>
+                <a href="#" class="post-name">ES6中的默默认值和解构</a>
             </div>
     </div>
     
@@ -84,7 +84,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            [Untitled Post]
+            ES6中的默默认值和解构
             <!-- 404 -->
             
         </h1>
@@ -102,7 +102,7 @@
             
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2017/10/18</span>
+                <span class="post-intro-time">2017/11/03</span>
             </div>
         
     </div>
@@ -173,31 +173,114 @@
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>#HTTP协议</p>
-<p>##</p>
-<ol>
-<li>HTTP客户端发起请求，创建端口</li>
-<li>HTTP服务器在端口监听客户端请求</li>
-<li>HTTP服务器向客户端返回状态和内容</li>
-<li></li>
-</ol>
+        <p>默认值和解构数组<br>你可以将默认函数参数和解构结合到一起， 创建非常强大的函数！</p>
+<pre><code>function createGrid([width = 5, height = 5]) {
+  return `Generates a ${width} x ${height} grid`;
+}
+
+createGrid([]); // Generates a 5 x 5 grid
+createGrid([2]); // Generates a 2 x 5 grid
+createGrid([2, 3]); // Generates a 2 x 3 grid
+createGrid([undefined, 3]); // Generates a 5 x 3 grid
+
+Returns:
+Generates a 5 x 5 grid
+Generates a 2 x 5 grid
+Generates a 2 x 3 grid
+Generates a 5 x 3 grid
+</code></pre><p>createGrid() 函数预期传入的是数组。它通过解构将数组中的第一项设为 width，第二项设为 height。如果数组为空，或者只有一项，那么就会使用默认参数，并将缺失的参数设为默认值 5。</p>
+<p>但是存在一个问题，下面的代码将不可行：</p>
+<pre><code>createGrid(); // throws an error
+Uncaught TypeError: Cannot read property &apos;Symbol(Symbol.iterator)&apos; of undefined
+</code></pre><p>出现错误，因为 createGrid() 预期传入的是数组，然后对其进行解构。因为函数被调用时没有传入数组，所以出现问题。但是，我们可以使用默认的函数参数！</p>
+<pre><code>function createGrid([width = 5, height = 5] = []) {
+  return `Generating a grid of ${width} by ${height}`;
+}
+</code></pre><p>看到函数参数中的新 = [] 了吗？如果 createGrid() 在被调用时没有任何参数，它将使用这个默认的空数组。因为数组是空的，因此没有任何内容可以解构为 width 和 height，因此将应用它们的默认值！通过添加 = [] 为整个参数设定一个默认值，下面的代码将可行：</p>
+<pre><code>createGrid(); // Generates a 5 x 5 grid
+Returns: Generates a 5 x 5 grid
+</code></pre><p>看看下面的代码：</p>
+<pre><code>function houseDescriptor([houseColor = &apos;green&apos;, shutterColors = [&apos;red&apos;]]) {
+  return `I have a ${houseColor} house with ${shutterColors.join(&apos; and &apos;)} shutters`;
+}
+</code></pre><p>下面的哪些选项可以正常运行，不会出现错误？</p>
+<pre><code>1.houseDescriptor(&apos;red&apos;, [&apos;white&apos;, &apos;gray&apos;, &apos;pink&apos;]);
+
+2.houseDescriptor([&apos;green&apos;, [&apos;white&apos;, &apos;gray&apos;, &apos;pink&apos;]]);
+
+3.houseDescriptor([&apos;blue&apos;, &apos;purple&apos;]);
+
+4.houseDescriptor([&apos;green&apos;]);//答案为2和4
+</code></pre><p>#####默认值和解构对象<br>就像使用数组默认值解构数组一样，函数可以让对象成为一个默认参数，并使用对象解构：</p>
+<pre><code>function createSundae({scoops = 1, toppings = [&apos;Hot Fudge&apos;]}) {
+  const scoopText = scoops === 1 ? &apos;scoop&apos; : &apos;scoops&apos;;
+  return `Your sundae has ${scoops} ${scoopText} with ${toppings.join(&apos; and &apos;)} toppings.`;
+}
+
+createSundae({}); // Your sundae has 1 scoop with Hot Fudge toppings.
+createSundae({scoops: 2}); // Your sundae has 2 scoops with Hot Fudge toppings.
+createSundae({scoops: 2, toppings: [&apos;Sprinkles&apos;]}); // Your sundae has 2 scoops with Sprinkles toppings.
+createSundae({toppings: [&apos;Cookie Dough&apos;]}); // Your sundae has 1 scoop with Cookie Dough toppings.
+
+Returns:
+Your sundae has 1 scoop with Hot Fudge toppings.
+Your sundae has 2 scoops with Hot Fudge toppings.
+Your sundae has 2 scoops with Sprinkles toppings.
+Your sundae has 1 scoop with Cookie Dough toppings.
+</code></pre><p>就像上面的数组示例，如果尝试调用函数时不传入参数，将不可行：</p>
+<pre><code>createSundae(); // throws an error
+Uncaught TypeError: Cannot match against &apos;undefined&apos; or &apos;null&apos;.
+</code></pre><p>我们可以通过向函数提供默认对象来防止出现此问题：</p>
+<pre><code>function createSundae({scoops = 1, toppings = [&apos;Hot Fudge&apos;]} = {}) {
+  const scoopText = scoops === 1 ? &apos;scoop&apos; : &apos;scoops&apos;;
+  return `Your sundae has ${scoops} ${scoopText} with ${toppings.join(&apos; and &apos;)} toppings.`;
+}
+</code></pre><p>通过添加空对象作为默认参数，以防未提供参数，现在调用函数时没有任何参数将可行。</p>
+<pre><code>createSundae(); // Your sundae has 1 scoop with Hot Fudge toppings.
+Returns: Your sundae has 1 scoop with Hot Fudge toppings.
+</code></pre><p>习题 2/2</p>
+<p>看看下面的代码：</p>
+<pre><code>function houseDescriptor({houseColor = &apos;green&apos;, shutterColors = [&apos;red&apos;]} = {}) {
+  return `I have a ${houseColor} house with ${shutterColors.join(&apos; and &apos;)} shutters`;
+}
+</code></pre><p>下面的哪些选项可以正常运行，不会出现错误？</p>
+<pre><code>1.houseDescriptor({houseColor: &apos;red&apos;, shutterColors: [&apos;white&apos;, &apos;gray&apos;, &apos;pink&apos;]});
+
+2.houseDescriptor({houseColor: &apos;red&apos;});
+
+3.houseDescriptor();
+
+4.houseDescriptor({shutterColors: [&apos;orange&apos;, &apos;blue&apos;]});
+
+5.houseDescriptor({});
+//所有函数都能运行
+</code></pre><p>数组默认值与对象默认值<br>默认函数参数只是个简单的添加内容，但是却带来很多便利！与数组默认值相比，对象默认值具备的一个优势是能够处理跳过的选项。看看下面的代码：</p>
+<pre><code>function createSundae({scoops = 1, toppings = [&apos;Hot Fudge&apos;]} = {}) { … }
+</code></pre><p>在 createSundae() 函数使用对象默认值进行解构时，如果你想使用 scoops 的默认值，但是更改 toppings，那么只需使用 toppings 传入一个对象：</p>
+<pre><code>createSundae({toppings: [&apos;Hot Fudge&apos;, &apos;Sprinkles&apos;, &apos;Caramel&apos;]});
+</code></pre><p>将上述示例与使用数组默认值进行解构的同一函数相对比。</p>
+<pre><code>function createSundae([scoops = 1, toppings = [&apos;Hot Fudge&apos;]] = []) { … }
+</code></pre><p>对于这个函数，如果想使用 scoops 的默认数量，但是更改 toppings，则必须以这种奇怪的方式调用你的函数：</p>
+<pre><code>createSundae([undefined, toppings: [&apos;Hot Fudge&apos;, &apos;Sprinkles&apos;, &apos;Caramel&apos;]]);
+</code></pre><p>因为数组是基于位置的，我们需要传入 undefined 以跳过第一个参数（并使用默认值）来到达第二个参数。</p>
+<p>除非你有很充足的理由来使用数组默认值进行数组解构，否则建议使用对象默认值进行对象解构！</p>
 
     </article>
     <!-- 前后页  -->
     <ul class="post-pager">
         
             <li class="next">
-                <a href= "/2017/10/24/JavaScript和this的个人理解/" title= JavaScript闭包和this的个人理解 >
+                <a href= "/2017/11/03/ES5中JavaScript的类/" title= ES5中JavaScript的类 >
                     <span>Next Post</span>
-                    <span>JavaScript闭包和this的个人理解</span>
+                    <span>ES5中JavaScript的类</span>
                 </a>
             </li>
         
         
             <li class="previous">
-                <a href= "/2017/10/16/JavaScript中的DOM操作/" title=  >
+                <a href= "/2017/11/03/this和箭头函数/" title= this和箭头函数 >
                     <span>Previous Post</span>
-                    <span>[Untitled Post]</span>
+                    <span>this和箭头函数</span>
                 </a>
             </li>
         

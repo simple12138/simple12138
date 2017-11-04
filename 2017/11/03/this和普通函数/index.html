@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        fi3ework&#39;s Studio
+        this和普通函数 · fi3ework&#39;s Studio
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -63,7 +63,7 @@
                 <a href="/" >fi3ework&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name"></a>
+                <a href="#" class="post-name">this和普通函数</a>
             </div>
     </div>
     
@@ -84,7 +84,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            [Untitled Post]
+            this和普通函数
             <!-- 404 -->
             
         </h1>
@@ -100,9 +100,15 @@
         
             <!-- 文章页标签  -->
             
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
+    
+</div>
+            
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2017/10/18</span>
+                <span class="post-intro-time">2017/11/03</span>
             </div>
         
     </div>
@@ -173,13 +179,25 @@
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>#HTTP协议</p>
-<p>##</p>
+        <p>要了解箭头函数中的 this 有何区别，让我们快速总结下标准函数中的 this 是如何使用的。如果你已经非常熟悉 this 的使用方法，可以跳过此部分。</p>
+<p>this 关键字的价值完全取决于它的函数（或方法）是如何被调用的。this 可以是以下任何内容：</p>
 <ol>
-<li>HTTP客户端发起请求，创建端口</li>
-<li>HTTP服务器在端口监听客户端请求</li>
-<li>HTTP服务器向客户端返回状态和内容</li>
-<li></li>
+<li><p>新的对象<br>如果函数使用 new 被调用：</p>
+<pre><code>const mySundae = new Sundae(&apos;Chocolate&apos;, [&apos;Sprinkles&apos;, &apos;Hot Fudge&apos;]);
+</code></pre><p>在上述代码中，Sundae 这个构造函数内的 this 的值是新的对象，因为它使用 new 被调用。</p>
+</li>
+<li><p>指定的对象<br>如果函数使用 call/apply 被调用：</p>
+<pre><code>const result = obj1.printName.call(obj2);
+</code></pre><p>在上述代码中，printName() 中的 this 的值将指的是 obj2，因为 call() 的第一个参数明确设定 this 指代的是什么。</p>
+</li>
+<li><p>上下文对象<br>如果函数是对象方法：</p>
+<pre><code>data.teleport();
+</code></pre><p>在上述代码中，teleport() 中的 this 的值将指代 data。</p>
+</li>
+<li><p>全局对象或 undefined<br>如果函数被调用时没有上下文：</p>
+<pre><code>teleport();
+</code></pre><p>在上述代码中，teleport() 中的 this 的值是全局对象，如果在严格模式下，是 undefined。</p>
+</li>
 </ol>
 
     </article>
@@ -187,17 +205,17 @@
     <ul class="post-pager">
         
             <li class="next">
-                <a href= "/2017/10/24/JavaScript和this的个人理解/" title= JavaScript闭包和this的个人理解 >
+                <a href= "/2017/11/03/this和箭头函数/" title= this和箭头函数 >
                     <span>Next Post</span>
-                    <span>JavaScript闭包和this的个人理解</span>
+                    <span>this和箭头函数</span>
                 </a>
             </li>
         
         
             <li class="previous">
-                <a href= "/2017/10/16/JavaScript中的DOM操作/" title=  >
+                <a href= "/2017/11/03/ES6中的箭头函数/" title= ES6中的箭头函数 >
                     <span>Previous Post</span>
-                    <span>[Untitled Post]</span>
+                    <span>ES6中的箭头函数</span>
                 </a>
             </li>
         
