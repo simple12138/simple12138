@@ -149,6 +149,180 @@
     
     
         <article class="index-post">
+            <a class="content-show-full" href = "/2017/11/18/jQuery的`ajax()`方法/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>jQuery的`ajax()`方法</span>
+                    </h2>
+                <div class="abstract-content">
+                    .ajax() 方法 是整个 jQuery 库的异步请求的核心。你可以通过多种方式来调用 .ajax() 方法：
+$.ajax(&lt;url-to-fetch&gt;, &lt;a-configuration-object&gt;);
+
+// or 
+$.ajax();.ajax() 方法的最常用使用方式是使用配置对象，因为可以在配置对象中设置一切。
+##什么是”配置对象”？##配置对象是一个用来配置方法的普通 JavaScript 对象。例如：
+var settings = {
+   frosting: &apos;buttercream&apos;,
+   colors: [&ap...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/18</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2017/11/13/Promise对象的一些例子/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>Promise对象的一些例子</span>
+                    </h2>
+                <div class="abstract-content">
+                    下面是异步加载图片的例子。function loadImageAsync(url) {
+  return new Promise(function(resolve, reject) {
+    const image = new Image();
+
+    image.onload = function() {
+      resolve(image);
+    };
+
+    image.onerror = function() {
+      reject(new Error(&apos;Could not load image at &apos; + url));
+    };
+
+...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/13</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2017/11/12/Promise对象的个人理解/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>Promise对象的个人理解</span>
+                    </h2>
+                <div class="abstract-content">
+                    Promise对象有以下两个特点（1）对象的状态不受外界影响。Promise对象代表一个异步操作，有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）。只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是Promise这个名字的由来，它的英语意思就是“承诺”，表示其他手段无法改变。
+（2）一旦状态改变，就不会再变，任何时候都可以得到这个结果。Promise对象的状态改变，只有两种可能：从pending变为fulfilled和从pending变为rejected。只要这两种情况发生，状态就凝固了，不会再变了，会一直保...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/12</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2017/11/05/ES6中的Promise/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>ES6中的Promise</span>
+                    </h2>
+                <div class="abstract-content">
+                    JavaScript Promise 是用新的 Promise 构造函数 - new Promise() 创建而成的。
+promise 使你能够展开一些可以异步完成的工作，并回到常规工作。创建 promise 时，必须向其提供异步运行的代码。将该代码当做参数提供给构造函数：
+new Promise(function () {
+    window.setTimeout(function createSundae(flavor = &apos;chocolate&apos;) {
+        const sundae = {};
+        // request ice cream...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/05</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2017/11/05/ES6中的Map-映射/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>ES6中的Map(映射)</span>
+                    </h2>
+                <div class="abstract-content">
+                    如果说 Set 类似于数组，那么 Map 就类似于对象，因为 Map 存储键值对，和对象包含命名属性及值相类似。
+本质上，Map 是一个可以存储键值对的对象，键和值都可以是对象、原始值或二者的结合。
+如何创建 Map要创建 Map，只需输入：
+const employees = new Map();
+console.log(employees);
+Map {}
+这样就会创建空的 Map employee，没有键值对。修改 Map
+#####和 Set 不同，你无法使用值列表创建 Map；而是使用 Map 的 .set() 方法添加键值。#####
+const employees = ne...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/05</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="content-show-full" href = "/2017/11/04/ES6中的迭代器协议和可迭代协议/" >
                     <h2 class="abstract-title">
                         
@@ -293,158 +467,6 @@ createGrid([]); // Generates a 5 x 5 grid
 createGrid([2]); // Generates a 2 x 5 grid
 createGrid([2, 3]); // Generates a 2 x 3 grid
 createGrid([undefined, 3]);...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/03/this和箭头函数/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>this和箭头函数</span>
-                    </h2>
-                <div class="abstract-content">
-                    对于普通函数，this 的值基于函数如何被调用。对于箭头函数，this 的值基于函数周围的上下文。换句话说，箭头函数内的，this 的值与函数外面的 this 的值一样。
-我们先看一个普通函数中的 this 示例，再看一个箭头函数是如何使用 this 的。
-// constructor
-function IceCream() {
-  this.scoops = 0;
-}
-
-// adds scoop to ice cream
-IceCream.prototype.addScoop = function() {
-  setTimeout(function() {
-    this.scoo...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/03/this和普通函数/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>this和普通函数</span>
-                    </h2>
-                <div class="abstract-content">
-                    要了解箭头函数中的 this 有何区别，让我们快速总结下标准函数中的 this 是如何使用的。如果你已经非常熟悉 this 的使用方法，可以跳过此部分。
-this 关键字的价值完全取决于它的函数（或方法）是如何被调用的。this 可以是以下任何内容：
-
-新的对象如果函数使用 new 被调用：
-const mySundae = new Sundae(&apos;Chocolate&apos;, [&apos;Sprinkles&apos;, &apos;Hot Fudge&apos;]);
-在上述代码中，Sundae 这个构造函数内的 this 的值是新的对象，因为它使用 new 被调用。...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/03/ES6中的箭头函数/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>ES6中的箭头函数</span>
-                    </h2>
-                <div class="abstract-content">
-                    函数是 JavaScript 中的主要数据结构之一，它们一直都存在于 Javascript 中。
-箭头函数ES6 引入了一种新的函数，叫做箭头函数。箭头函数和普通函数的行为非常相似，但是在语法构成上非常不同。以下代码列出一组名字，使用普通函数把其中每个名字转换为大写形式：
-const upperizedNames = [&apos;Farrin&apos;, &apos;Kagure&apos;, &apos;Asser&apos;].map(function(name) { 
-  return name.toUpperCase();
-});
-下面的代码操作一样，但是向 map() 方法...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/03/EES6中的剩余参数/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>EES6中的剩余参数</span>
-                    </h2>
-                <div class="abstract-content">
-                    如果你可以使用展开运算符将数组展开为多个元素，那么肯定有一种方式将多个元素绑定到一个数组中吧？
-实际上，的确有！叫做剩余参数，它是 ES6 中新加的另一个运算符。
-剩余参数剩余参数也用三个连续的点 ( … ) 表示，使你能够将不定数量的元素表示为数组。它在多种情形下都比较有用。
-一种情形是将变量赋数组值时。例如，
-const order = [20.17, 18.67, 1.50, &quot;cheese&quot;, &quot;eggs&quot;, &quot;milk&quot;, &quot;bread&quot;];
-const [total, subtotal, tax,...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/03/ES6中的展开运算符/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>ES6中的展开运算符</span>
-                    </h2>
-                <div class="abstract-content">
-                    展开运算符展开运算符（用三个连续的点 ( … ) 表示）是 ES6 中的新概念，使你能够将字面量对象展开为多个元素。
-我们通过几个示例看看它的原理。
-const books = [&quot;Don Quixote&quot;, &quot;The Hobbit&quot;, 
-&quot;Alice in Wonderland&quot;, &quot;Tale of Two Cities&quot;];
-console.log(...books);
-Prints: Don Quixote The Hobbit Alice in Wonderland Tale of Two Citie...
                 </div>
             </a>
             <div class="abstract-post-meta">
@@ -742,7 +764,98 @@ Prints: Don Quixote The Hobbit Alice in Wonderland Tale of Two Citie...
     
     
     
-    <div class="total-archive"> Total : 19 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 24 </div>
     
     <div class="post-archive">
     
@@ -751,6 +864,31 @@ Prints: Don Quixote The Hobbit Alice in Wonderland Tale of Two Citie...
     
     <div class="archive-year"> 2017 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span><a class="archive-post-title" href= "/2017/11/18/jQuery的`ajax()`方法/" >jQuery的`ajax()`方法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/13</span><a class="archive-post-title" href= "/2017/11/13/Promise对象的一些例子/" >Promise对象的一些例子</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span><a class="archive-post-title" href= "/2017/11/12/Promise对象的个人理解/" >Promise对象的个人理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/05</span><a class="archive-post-title" href= "/2017/11/05/ES6中的Promise/" >ES6中的Promise</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/05</span><a class="archive-post-title" href= "/2017/11/05/ES6中的Map-映射/" >ES6中的Map(映射)</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -852,9 +990,9 @@ Prints: Don Quixote The Hobbit Alice in Wonderland Tale of Two Citie...
         <div class="sidebar-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name"><a href= "#">javaScript</a></span>
-    
         <span class="sidebar-tag-name"><a href= "#">JavaScript</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">javaScript</a></span>
     
     </div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">

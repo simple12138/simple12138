@@ -149,6 +149,158 @@
     
     
         <article class="index-post">
+            <a class="content-show-full" href = "/2017/11/03/this和箭头函数/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>this和箭头函数</span>
+                    </h2>
+                <div class="abstract-content">
+                    对于普通函数，this 的值基于函数如何被调用。对于箭头函数，this 的值基于函数周围的上下文。换句话说，箭头函数内的，this 的值与函数外面的 this 的值一样。
+我们先看一个普通函数中的 this 示例，再看一个箭头函数是如何使用 this 的。
+// constructor
+function IceCream() {
+  this.scoops = 0;
+}
+
+// adds scoop to ice cream
+IceCream.prototype.addScoop = function() {
+  setTimeout(function() {
+    this.scoo...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2017/11/03/this和普通函数/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>this和普通函数</span>
+                    </h2>
+                <div class="abstract-content">
+                    要了解箭头函数中的 this 有何区别，让我们快速总结下标准函数中的 this 是如何使用的。如果你已经非常熟悉 this 的使用方法，可以跳过此部分。
+this 关键字的价值完全取决于它的函数（或方法）是如何被调用的。this 可以是以下任何内容：
+
+新的对象如果函数使用 new 被调用：
+const mySundae = new Sundae(&apos;Chocolate&apos;, [&apos;Sprinkles&apos;, &apos;Hot Fudge&apos;]);
+在上述代码中，Sundae 这个构造函数内的 this 的值是新的对象，因为它使用 new 被调用。...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2017/11/03/ES6中的箭头函数/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>ES6中的箭头函数</span>
+                    </h2>
+                <div class="abstract-content">
+                    函数是 JavaScript 中的主要数据结构之一，它们一直都存在于 Javascript 中。
+箭头函数ES6 引入了一种新的函数，叫做箭头函数。箭头函数和普通函数的行为非常相似，但是在语法构成上非常不同。以下代码列出一组名字，使用普通函数把其中每个名字转换为大写形式：
+const upperizedNames = [&apos;Farrin&apos;, &apos;Kagure&apos;, &apos;Asser&apos;].map(function(name) { 
+  return name.toUpperCase();
+});
+下面的代码操作一样，但是向 map() 方法...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2017/11/03/EES6中的剩余参数/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>EES6中的剩余参数</span>
+                    </h2>
+                <div class="abstract-content">
+                    如果你可以使用展开运算符将数组展开为多个元素，那么肯定有一种方式将多个元素绑定到一个数组中吧？
+实际上，的确有！叫做剩余参数，它是 ES6 中新加的另一个运算符。
+剩余参数剩余参数也用三个连续的点 ( … ) 表示，使你能够将不定数量的元素表示为数组。它在多种情形下都比较有用。
+一种情形是将变量赋数组值时。例如，
+const order = [20.17, 18.67, 1.50, &quot;cheese&quot;, &quot;eggs&quot;, &quot;milk&quot;, &quot;bread&quot;];
+const [total, subtotal, tax,...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2017/11/03/ES6中的展开运算符/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>ES6中的展开运算符</span>
+                    </h2>
+                <div class="abstract-content">
+                    展开运算符展开运算符（用三个连续的点 ( … ) 表示）是 ES6 中的新概念，使你能够将字面量对象展开为多个元素。
+我们通过几个示例看看它的原理。
+const books = [&quot;Don Quixote&quot;, &quot;The Hobbit&quot;, 
+&quot;Alice in Wonderland&quot;, &quot;Tale of Two Cities&quot;];
+console.log(...books);
+Prints: Don Quixote The Hobbit Alice in Wonderland Tale of Two Citie...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="content-show-full" href = "/2017/11/02/ES6中的For循环/" >
                     <h2 class="abstract-title">
                         
@@ -328,159 +480,10 @@ ben.mobe();
             </div>
         </article>
     
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/25/关于this绑定的情况/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>关于this绑定的情况</span>
-                    </h2>
-                <div class="abstract-content">
-                    var fu = function(one,two){
-    log(this,one,two);
-};
-var r={}, g={}, b={}, y={};
-r.method = fn;
-
-1.r.method(g,b);
-
-2.fn(g,b);
-
-3.fn.call(r,g,b);
-
-4.r.method.call(y,g,b);
-
-5.setTimeout(fn,1000);
-
-6.setTimeout(r.method,1000);
-
-7.setTimeout(function(){
-    r.method(g,b);
-},1000);
-以上7种情况中：1.通过点符号（.）...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/25</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/24/JavaScript和this的个人理解/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>JavaScript闭包和this的个人理解</span>
-                    </h2>
-                <div class="abstract-content">
-                    #闭包
-##简单来说 每个函数都可以访问其外围作用域中的所有变量闭包是指一些函数通过某种方式 可以随时被访问 即使它的外部代码已经执行完毕function A（）{function b（）{}}在执行完毕A函数后还能执行b的方法：
-
-将b传入setTimeout
-在A中返回b
-将b保存为某个全局变量
-
-#thisThis是一个标识符，它需要和值进行绑定，跟变量差不多，但是，在你的代码中，它并不是和某个具体的值进行绑定，而是自动绑定到正确的对象上。一般来说，参数究竟绑定在哪个对象上都是由定位函数参数规则决定的，而定位函数参数和“参数”this的区别则决定了你在调用方法或构造函数时对于谁才是...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/24</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/18/HTTP协议/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>[Untitled Post]</span>
-                    </h2>
-                <div class="abstract-content">
-                    #HTTP协议
-##
-
-HTTP客户端发起请求，创建端口
-HTTP服务器在端口监听客户端请求
-HTTP服务器向客户端返回状态和内容
-
-
-
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/18</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/16/JavaScript中的DOM操作/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>[Untitled Post]</span>
-                    </h2>
-                <div class="abstract-content">
-                    #JavaScript
-##
-###DOM元素的创建和添加
-
-父类.appendChild(子节点)
-父类.insertBefore(子节点，在谁之前)
-&lt;ul id = &quot;ul1&quot;&gt;&lt;/ul&gt;
-
-var a =function(){
-    var oLi=document.createElement(&apos;li&apos;);
-    var aLi=oUl.getElementsByTagName(&apos;li&apos;);
-
-    oLi.innerHTML=oTxt.value;
-    if(aLi.length&gt...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/16</span>
-                </div>
-            </div>
-        </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/2017/">#PREV</a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span>
+        <a class="extend prev" rel="prev" href="/archives/2017/">#PREV</a><a class="page-number" href="/archives/2017/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2017/page/3/">3</a><a class="extend next" rel="next" href="/archives/2017/page/3/">#NEXT</a>
     </nav>
     
 </main>
@@ -762,7 +765,98 @@ var a =function(){
     
     
     
-    <div class="total-archive"> Total : 19 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 24 </div>
     
     <div class="post-archive">
     
@@ -771,6 +865,31 @@ var a =function(){
     
     <div class="archive-year"> 2017 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span><a class="archive-post-title" href= "/2017/11/18/jQuery的`ajax()`方法/" >jQuery的`ajax()`方法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/13</span><a class="archive-post-title" href= "/2017/11/13/Promise对象的一些例子/" >Promise对象的一些例子</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span><a class="archive-post-title" href= "/2017/11/12/Promise对象的个人理解/" >Promise对象的个人理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/05</span><a class="archive-post-title" href= "/2017/11/05/ES6中的Promise/" >ES6中的Promise</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/05</span><a class="archive-post-title" href= "/2017/11/05/ES6中的Map-映射/" >ES6中的Map(映射)</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -872,9 +991,9 @@ var a =function(){
         <div class="sidebar-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name"><a href= "#">javaScript</a></span>
-    
         <span class="sidebar-tag-name"><a href= "#">JavaScript</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">javaScript</a></span>
     
     </div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">

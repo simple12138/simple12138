@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        simple&#39;s Studio
+        Promise对象的一些例子 · simple&#39;s Studio
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -50,11 +50,22 @@
     
 </head>
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >simple&#39;s Studio.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Promise对象的一些例子</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>simple's Studio.</a>
 </header>
@@ -62,21 +73,43 @@
         <div class="site-intro">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(http://oumn0o088.bkt.clouddn.com/post-bg.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            Promise对象的一些例子
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2017/11/13</span>
+            </div>
         
     </div>
 </div>
@@ -144,347 +177,127 @@
             }
         </script>
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/03/this和箭头函数/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>this和箭头函数</span>
-                    </h2>
-                <div class="abstract-content">
-                    对于普通函数，this 的值基于函数如何被调用。对于箭头函数，this 的值基于函数周围的上下文。换句话说，箭头函数内的，this 的值与函数外面的 this 的值一样。
-我们先看一个普通函数中的 this 示例，再看一个箭头函数是如何使用 this 的。
-// constructor
-function IceCream() {
-  this.scoops = 0;
+            <main class="main post-page">
+    <article class="article-entry">
+        <h3 id="下面是异步加载图片的例子。"><a href="#下面是异步加载图片的例子。" class="headerlink" title="下面是异步加载图片的例子。"></a>下面是异步加载图片的例子。</h3><pre><code>function loadImageAsync(url) {
+  return new Promise(function(resolve, reject) {
+    const image = new Image();
+
+    image.onload = function() {
+      resolve(image);
+    };
+
+    image.onerror = function() {
+      reject(new Error(&apos;Could not load image at &apos; + url));
+    };
+
+    image.src = url;
+  });
 }
+</code></pre><p>上面代码中，使用Promise包装了一个图片加载的异步操作。如果加载成功，就调用resolve方法，否则就调用reject方法。</p>
+<p>###下面是一个用Promise对象实现的 Ajax 操作的例子。###</p>
+<pre><code>const getJSON = function(url) {
+  const promise = new Promise(function(resolve, reject){
+    const handler = function() {
+      if (this.readyState !== 4) {
+        return;
+      }
+      if (this.status === 200) {
+        resolve(this.response);
+      } else {
+        reject(new Error(this.statusText));
+      }
+    };
+    const client = new XMLHttpRequest();
+    client.open(&quot;GET&quot;, url);
+    client.onreadystatechange = handler;
+    client.responseType = &quot;json&quot;;
+    client.setRequestHeader(&quot;Accept&quot;, &quot;application/json&quot;);
+    client.send();
 
-// adds scoop to ice cream
-IceCream.prototype.addScoop = function() {
-  setTimeout(function() {
-    this.scoo...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/03/this和普通函数/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>this和普通函数</span>
-                    </h2>
-                <div class="abstract-content">
-                    要了解箭头函数中的 this 有何区别，让我们快速总结下标准函数中的 this 是如何使用的。如果你已经非常熟悉 this 的使用方法，可以跳过此部分。
-this 关键字的价值完全取决于它的函数（或方法）是如何被调用的。this 可以是以下任何内容：
+  });
 
-新的对象如果函数使用 new 被调用：
-const mySundae = new Sundae(&apos;Chocolate&apos;, [&apos;Sprinkles&apos;, &apos;Hot Fudge&apos;]);
-在上述代码中，Sundae 这个构造函数内的 this 的值是新的对象，因为它使用 new 被调用。...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/03/ES6中的箭头函数/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>ES6中的箭头函数</span>
-                    </h2>
-                <div class="abstract-content">
-                    函数是 JavaScript 中的主要数据结构之一，它们一直都存在于 Javascript 中。
-箭头函数ES6 引入了一种新的函数，叫做箭头函数。箭头函数和普通函数的行为非常相似，但是在语法构成上非常不同。以下代码列出一组名字，使用普通函数把其中每个名字转换为大写形式：
-const upperizedNames = [&apos;Farrin&apos;, &apos;Kagure&apos;, &apos;Asser&apos;].map(function(name) { 
-  return name.toUpperCase();
+  return promise;
+};
+
+getJSON(&quot;/posts.json&quot;).then(function(json) {
+  console.log(&apos;Contents: &apos; + json);
+}, function(error) {
+  console.error(&apos;出错了&apos;, error);
 });
-下面的代码操作一样，但是向 map() 方法...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/03/EES6中的剩余参数/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>EES6中的剩余参数</span>
-                    </h2>
-                <div class="abstract-content">
-                    如果你可以使用展开运算符将数组展开为多个元素，那么肯定有一种方式将多个元素绑定到一个数组中吧？
-实际上，的确有！叫做剩余参数，它是 ES6 中新加的另一个运算符。
-剩余参数剩余参数也用三个连续的点 ( … ) 表示，使你能够将不定数量的元素表示为数组。它在多种情形下都比较有用。
-一种情形是将变量赋数组值时。例如，
-const order = [20.17, 18.67, 1.50, &quot;cheese&quot;, &quot;eggs&quot;, &quot;milk&quot;, &quot;bread&quot;];
-const [total, subtotal, tax,...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/03/ES6中的展开运算符/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>ES6中的展开运算符</span>
-                    </h2>
-                <div class="abstract-content">
-                    展开运算符展开运算符（用三个连续的点 ( … ) 表示）是 ES6 中的新概念，使你能够将字面量对象展开为多个元素。
-我们通过几个示例看看它的原理。
-const books = [&quot;Don Quixote&quot;, &quot;The Hobbit&quot;, 
-&quot;Alice in Wonderland&quot;, &quot;Tale of Two Cities&quot;];
-console.log(...books);
-Prints: Don Quixote The Hobbit Alice in Wonderland Tale of Two Citie...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/02/ES6中的For循环/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>ES6中的For循环</span>
-                    </h2>
-                <div class="abstract-content">
-                    for…of 循环是最新添加到 JavaScript 循环系列中的循环。
-它结合了其兄弟循环形式 for 循环和 for…in 循环的优势，可以循环任何可迭代（也就是遵守可迭代协议）类型的数据。默认情况下，包含以下数据类型：String、Array、Map 和 Set，注意不包含 Object 数据类型（即 {}）。默认情况下，对象不可迭代。
-在研究 …of 循环之前，先快速了解下其他 for 循环，看看它们有哪些不足之处。
-for 循环for 循环很明显是最常见的循环类型，因此快速复习下即可。
-const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/02</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/02/对象字面量简写法/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>对象字面量简写法</span>
-                    </h2>
-                <div class="abstract-content">
-                    ES6 中经常出现的一个现象是删掉不必要的重复代码。通过删掉不必要的重复代码，代码更容易读懂，并且更简练。推出的新简写法（用来初始化对象并向对象中添加方法）就是这一体现。
-我们看看具体情况。
-对象字面量简写法你可能写过这样的代码：使用和所分配的变量名称相同的名称初始化对象。
-如果没写过的话，看看下面的示例。
-let type = &apos;quartz&apos;;
-let color = &apos;rose&apos;;
-let carat = 21.29;
+</code></pre><p>上面代码中，getJSON是对 XMLHttpRequest 对象的封装，用于发出一个针对 JSON 数据的 HTTP 请求，并且返回一个Promise对象。需要注意的是，在getJSON内部，resolve函数和reject函数调用时，都带有参数。</p>
+<p>如果调用resolve函数和reject函数时带有参数，那么它们的参数会被传递给回调函数。reject函数的参数通常是Error对象的实例，表示抛出的错误；resolve函数的参数除了正常的值以外，还可能是另一个 Promise 实例，比如像下面这样。</p>
+<pre><code>const p1 = new Promise(function (resolve, reject) {
+  // ...
+});
 
-const gemstone = {
-  type: type,
-  color: color,
-  carat: car...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/02</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/28/JavaScript中的伪类模式/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>JavaScript中的伪类模式</span>
-                    </h2>
-                <div class="abstract-content">
-                    ###JavaScript中的伪类模式
-继续上篇中我们的例子，拿到的是原型类
-var Car = function(loc) {
-    var obj = Object.create(Car.prototype);
-    obj.loc = loc;
-    return obj;
-};
-Car.prototype.move = function(){
-      this.loc++;
-     };
-现在我们把它重构成一种与之相似的模式-伪类模式。称它为伪类，是因为它仿照其他语言中的类系统，试图增添一些语法上的便利，如果我们要在程序中构造大量的类，那将会产生大量的重复代码，而语言...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/28</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/26/JavaScript中的new关键词/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>JavaScript中的new关键词</span>
-                    </h2>
-                <div class="abstract-content">
-                    ###new关键字
-使用new之前
-var Car=function(loc){
-    (1)
-    var obj=Object.create(Car.prototype);
-    obj.loc=loc;
-    return obj;
-    (2)
-};
-Car.prototype.move=function(){
-    this.loc++;
-};
+const p2 = new Promise(function (resolve, reject) {
+  // ...
+  resolve(p1);
+})
+</code></pre><p>上面代码中，p1和p2都是 Promise 的实例，但是p2的resolve方法将p1作为参数，即一个异步操作的结果是返回另一个异步操作。</p>
+<p><strong>注意</strong>，这时p1的状态就会传递给p2，也就是说，p1的状态决定了p2的状态。如果p1的状态是pending，那么p2的回调函数就会等待p1的状态改变；如果p1的状态已经是resolved或者rejected，那么p2的回调函数将会立刻执行。</p>
+<pre><code>const p1 = new Promise(function (resolve, reject) {
+  setTimeout(() =&gt; reject(new Error(&apos;fail&apos;)), 3000)
+})
 
-var ben=new Car(9);
-ben.mobe();
-一旦决定为某个函数使用关键字new，就需要做一些必要的重构。当在一个函数的调用前，使用关键字new，该函数便会以一种特殊的模式————构造模式来运行。所谓的构...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/26</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/25/关于原型链的个人理解/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>关于原型链和函数类的个人理解和</span>
-                    </h2>
-                <div class="abstract-content">
-                    #原型链原型链时创建与其他对象相似的对象的一种机制，当你为了节省内存或避免重复代码，需要两个对象拥有完全相同的属性时，你可能需要从一个对象复制所有的属性到另一个对象，但JavaScript提供了原型链这种替代方式，通过将第一个对象中的字段查找委派于第二个对象的方式，可以使得一个对象表现得似乎拥有另一个对象的所有属性。
+const p2 = new Promise(function (resolve, reject) {
+  setTimeout(() =&gt; resolve(p1), 1000)
+})
 
-#函数类在JavaScript中，函数是极其重要的，它们是JavaScript类的核心。JavaScript类其实就是一个可以创建许多相似对象的函数。每当一个函数创建多个对象，而它们全都遵从大致相同的方法和属性模式，这个函数就可以被称为类。但是需要了解这个定义实际上也是有...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+p2
+  .then(result =&gt; console.log(result))
+  .catch(error =&gt; console.log(error))
+// Error: fail
+</code></pre><p>上面代码中，p1是一个Promise，3秒之后变为rejected。p2的状态在1秒之后改变，resolve方法返回的是p1。由于p2返回的是另一个 Promise，导致p2自己的状态无效了，由p1的状态决定p2的状态。所以，后面的then语句都变成针对后者（p1）。又过了2秒，p1变为rejected，导致触发catch方法指定的回调函数。</p>
+<p><strong>注意</strong>，调用resolve或reject并不会终结 Promise 的参数函数的执行。</p>
+<pre><code>new Promise((resolve, reject) =&gt; {
+  resolve(1);
+  console.log(2);
+}).then(r =&gt; {
+  console.log(r);
+});
+// 2
+// 1
+</code></pre><p>上面代码中，调用resolve(1)以后，后面的console.log(2)还是会执行，并且会首先打印出来。这是因为立即 resolved 的 Promise 是在本轮事件循环的末尾执行，总是晚于本轮循环的同步任务。</p>
+<p><strong>一般来说</strong>，调用resolve或reject以后，Promise 的使命就完成了，后继操作应该放到then方法里面，而不应该直接写在resolve或reject的后面。所以，最好在它们前面加上return语句，这样就不会有意外。</p>
+<pre><code>new Promise((resolve, reject) =&gt; {
+  return resolve(1);
+  // 后面的语句不会执行
+  console.log(2);
+})
+</code></pre>
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+            <li class="next">
+                <a href= "/2017/11/18/jQuery的`ajax()`方法/" title= jQuery的`ajax()`方法 >
+                    <span>Next Post</span>
+                    <span>jQuery的`ajax()`方法</span>
+                </a>
+            </li>
+        
+        
+            <li class="previous">
+                <a href= "/2017/11/12/Promise对象的个人理解/" title= Promise对象的个人理解 >
+                    <span>Previous Post</span>
+                    <span>Promise对象的个人理解</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
     
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/25</span>
-                </div>
-            </div>
-        </article>
-    
-    <!-- paginator  -->
-    
-    <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/archives/">#PREV</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">#NEXT</a>
-    </nav>
+    <!--PC版-->
+
+    <!--PC版-->
+
+
     
 </main>
             <!-- profile -->
@@ -528,6 +341,13 @@ ben.mobe();
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper">
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#下面是异步加载图片的例子。"><span class="toc-number">1.</span> <span class="toc-text">下面是异步加载图片的例子。</span></a></li></ol>
+    </div>
     
     <div class="back-top">&#xe639;</div>
     <div class="sidebar">

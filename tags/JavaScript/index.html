@@ -149,22 +149,21 @@
     
     
         <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/04/ES6中的迭代器协议和可迭代协议/" >
+            <a class="content-show-full" href = "/2017/11/03/ES5中JavaScript的类/" >
                     <h2 class="abstract-title">
                         
-                        <span>ES6中的迭代器协议和可迭代协议</span>
+                        <span>ES5中JavaScript的类</span>
                     </h2>
                 <div class="abstract-content">
-                    在继续之前，我们先花些时间看一下 ES6 中的两个新协议：
+                    #####ES5 “类”总结因为 ES6 类只是一个“幻景”（语法糖），原型继承实际上在底层被隐藏起来了，我们快速了解下如何用 ES5 代码创建“类”：
+function Plane(numEngines) {
+  this.numEngines = numEngines;
+  this.enginesActive = false;
+}
 
-可迭代协议
-迭代器协议
-
-这两个协议不是内置的，但是它们可以帮助你理解 ES6 中的新迭代概念，就像给你展示标识符的使用案例一样。
-###可迭代协议可迭代协议用来定义和自定义对象的迭代行为。也就是说在 ES6 中，你可以灵活地指定循环访问对象中的值的方式。对于某些对象，它们已经内置了这一行为。例如，字符串和数组就是内置可迭代类型的例子。
-const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-for (const digit of digits) {
-  console.log(digit...
+// methods &quot;inherited&quot; by all instances
+Plane.prototype.startEngines = function () {
+  console.log(&apos;starting en...
                 </div>
             </a>
             <div class="abstract-post-meta">
@@ -172,345 +171,13 @@ for (const digit of digits) {
                 
                 <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/04</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/03/this和普通函数/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>this和普通函数</span>
-                    </h2>
-                <div class="abstract-content">
-                    要了解箭头函数中的 this 有何区别，让我们快速总结下标准函数中的 this 是如何使用的。如果你已经非常熟悉 this 的使用方法，可以跳过此部分。
-this 关键字的价值完全取决于它的函数（或方法）是如何被调用的。this 可以是以下任何内容：
-
-新的对象如果函数使用 new 被调用：
-const mySundae = new Sundae(&apos;Chocolate&apos;, [&apos;Sprinkles&apos;, &apos;Hot Fudge&apos;]);
-在上述代码中，Sundae 这个构造函数内的 this 的值是新的对象，因为它使用 new 被调用。...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
+        <a class="post-tag" href="javascript:void(0);" data-href = javaScript>javaScript</a>
     
 </div>
                 
                 <!-- date  -->
                 <div class="abstract-date">
                     <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/03/ES6中的箭头函数/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>ES6中的箭头函数</span>
-                    </h2>
-                <div class="abstract-content">
-                    函数是 JavaScript 中的主要数据结构之一，它们一直都存在于 Javascript 中。
-箭头函数ES6 引入了一种新的函数，叫做箭头函数。箭头函数和普通函数的行为非常相似，但是在语法构成上非常不同。以下代码列出一组名字，使用普通函数把其中每个名字转换为大写形式：
-const upperizedNames = [&apos;Farrin&apos;, &apos;Kagure&apos;, &apos;Asser&apos;].map(function(name) { 
-  return name.toUpperCase();
-});
-下面的代码操作一样，但是向 map() 方法...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/02/ES6中的For循环/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>ES6中的For循环</span>
-                    </h2>
-                <div class="abstract-content">
-                    for…of 循环是最新添加到 JavaScript 循环系列中的循环。
-它结合了其兄弟循环形式 for 循环和 for…in 循环的优势，可以循环任何可迭代（也就是遵守可迭代协议）类型的数据。默认情况下，包含以下数据类型：String、Array、Map 和 Set，注意不包含 Object 数据类型（即 {}）。默认情况下，对象不可迭代。
-在研究 …of 循环之前，先快速了解下其他 for 循环，看看它们有哪些不足之处。
-for 循环for 循环很明显是最常见的循环类型，因此快速复习下即可。
-const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/02</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/02/对象字面量简写法/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>对象字面量简写法</span>
-                    </h2>
-                <div class="abstract-content">
-                    ES6 中经常出现的一个现象是删掉不必要的重复代码。通过删掉不必要的重复代码，代码更容易读懂，并且更简练。推出的新简写法（用来初始化对象并向对象中添加方法）就是这一体现。
-我们看看具体情况。
-对象字面量简写法你可能写过这样的代码：使用和所分配的变量名称相同的名称初始化对象。
-如果没写过的话，看看下面的示例。
-let type = &apos;quartz&apos;;
-let color = &apos;rose&apos;;
-let carat = 21.29;
-
-const gemstone = {
-  type: type,
-  color: color,
-  carat: car...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/02</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/28/JavaScript中的伪类模式/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>JavaScript中的伪类模式</span>
-                    </h2>
-                <div class="abstract-content">
-                    ###JavaScript中的伪类模式
-继续上篇中我们的例子，拿到的是原型类
-var Car = function(loc) {
-    var obj = Object.create(Car.prototype);
-    obj.loc = loc;
-    return obj;
-};
-Car.prototype.move = function(){
-      this.loc++;
-     };
-现在我们把它重构成一种与之相似的模式-伪类模式。称它为伪类，是因为它仿照其他语言中的类系统，试图增添一些语法上的便利，如果我们要在程序中构造大量的类，那将会产生大量的重复代码，而语言...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/28</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/26/JavaScript中的new关键词/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>JavaScript中的new关键词</span>
-                    </h2>
-                <div class="abstract-content">
-                    ###new关键字
-使用new之前
-var Car=function(loc){
-    (1)
-    var obj=Object.create(Car.prototype);
-    obj.loc=loc;
-    return obj;
-    (2)
-};
-Car.prototype.move=function(){
-    this.loc++;
-};
-
-var ben=new Car(9);
-ben.mobe();
-一旦决定为某个函数使用关键字new，就需要做一些必要的重构。当在一个函数的调用前，使用关键字new，该函数便会以一种特殊的模式————构造模式来运行。所谓的构...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/26</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/25/关于原型链的个人理解/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>关于原型链和函数类的个人理解和</span>
-                    </h2>
-                <div class="abstract-content">
-                    #原型链原型链时创建与其他对象相似的对象的一种机制，当你为了节省内存或避免重复代码，需要两个对象拥有完全相同的属性时，你可能需要从一个对象复制所有的属性到另一个对象，但JavaScript提供了原型链这种替代方式，通过将第一个对象中的字段查找委派于第二个对象的方式，可以使得一个对象表现得似乎拥有另一个对象的所有属性。
-
-#函数类在JavaScript中，函数是极其重要的，它们是JavaScript类的核心。JavaScript类其实就是一个可以创建许多相似对象的函数。每当一个函数创建多个对象，而它们全都遵从大致相同的方法和属性模式，这个函数就可以被称为类。但是需要了解这个定义实际上也是有...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/25</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/25/关于this绑定的情况/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>关于this绑定的情况</span>
-                    </h2>
-                <div class="abstract-content">
-                    var fu = function(one,two){
-    log(this,one,two);
-};
-var r={}, g={}, b={}, y={};
-r.method = fn;
-
-1.r.method(g,b);
-
-2.fn(g,b);
-
-3.fn.call(r,g,b);
-
-4.r.method.call(y,g,b);
-
-5.setTimeout(fn,1000);
-
-6.setTimeout(r.method,1000);
-
-7.setTimeout(function(){
-    r.method(g,b);
-},1000);
-以上7种情况中：1.通过点符号（.）...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/25</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/24/JavaScript和this的个人理解/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>JavaScript闭包和this的个人理解</span>
-                    </h2>
-                <div class="abstract-content">
-                    #闭包
-##简单来说 每个函数都可以访问其外围作用域中的所有变量闭包是指一些函数通过某种方式 可以随时被访问 即使它的外部代码已经执行完毕function A（）{function b（）{}}在执行完毕A函数后还能执行b的方法：
-
-将b传入setTimeout
-在A中返回b
-将b保存为某个全局变量
-
-#thisThis是一个标识符，它需要和值进行绑定，跟变量差不多，但是，在你的代码中，它并不是和某个具体的值进行绑定，而是自动绑定到正确的对象上。一般来说，参数究竟绑定在哪个对象上都是由定位函数参数规则决定的，而定位函数参数和“参数”this的区别则决定了你在调用方法或构造函数时对于谁才是...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/24</span>
                 </div>
             </div>
         </article>
@@ -796,7 +463,98 @@ r.method = fn;
     
     
     
-    <div class="total-archive"> Total : 19 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 24 </div>
     
     <div class="post-archive">
     
@@ -805,6 +563,31 @@ r.method = fn;
     
     <div class="archive-year"> 2017 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span><a class="archive-post-title" href= "/2017/11/18/jQuery的`ajax()`方法/" >jQuery的`ajax()`方法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/13</span><a class="archive-post-title" href= "/2017/11/13/Promise对象的一些例子/" >Promise对象的一些例子</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span><a class="archive-post-title" href= "/2017/11/12/Promise对象的个人理解/" >Promise对象的个人理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/05</span><a class="archive-post-title" href= "/2017/11/05/ES6中的Promise/" >ES6中的Promise</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/05</span><a class="archive-post-title" href= "/2017/11/05/ES6中的Map-映射/" >ES6中的Map(映射)</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -906,9 +689,651 @@ r.method = fn;
         <div class="sidebar-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name"><a href= "#">JavaScript</a></span>
+    
         <span class="sidebar-tag-name"><a href= "#">javaScript</a></span>
     
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #888; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+
+" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/03</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2017/11/02/ES6中的For循环/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>ES6中的For循环</span>
+                    </h2>
+                <div class="abstract-content">
+                    for…of 循环是最新添加到 JavaScript 循环系列中的循环。
+它结合了其兄弟循环形式 for 循环和 for…in 循环的优势，可以循环任何可迭代（也就是遵守可迭代协议）类型的数据。默认情况下，包含以下数据类型：String、Array、Map 和 Set，注意不包含 Object 数据类型（即 {}）。默认情况下，对象不可迭代。
+在研究 …of 循环之前，先快速了解下其他 for 循环，看看它们有哪些不足之处。
+for 循环for 循环很明显是最常见的循环类型，因此快速复习下即可。
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/02</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2017/11/02/对象字面量简写法/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>对象字面量简写法</span>
+                    </h2>
+                <div class="abstract-content">
+                    ES6 中经常出现的一个现象是删掉不必要的重复代码。通过删掉不必要的重复代码，代码更容易读懂，并且更简练。推出的新简写法（用来初始化对象并向对象中添加方法）就是这一体现。
+我们看看具体情况。
+对象字面量简写法你可能写过这样的代码：使用和所分配的变量名称相同的名称初始化对象。
+如果没写过的话，看看下面的示例。
+let type = &apos;quartz&apos;;
+let color = &apos;rose&apos;;
+let carat = 21.29;
+
+const gemstone = {
+  type: type,
+  color: color,
+  carat: car...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = JavaScript>JavaScript</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/02</span>
+                </div>
+            </div>
+        </article>
+    
+    <!-- paginator  -->
+    
+    <nav class="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/tags/JavaScript/page/2/">2</a><a class="extend next" rel="next" href="/tags/JavaScript/page/2/">#NEXT</a>
+    </nav>
+    
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:136510917@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="https://github.com/simple12138" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+    
+        
+            
+                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title="rss"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">Theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="back-top">&#xe639;</div>
+    <div class="sidebar">
+    <div class="sidebar-header sidebar-header-show-archive">
+        <div class="sidebar-category">
+            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
+            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
+        </div>
+    </div>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-archive">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 24 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/18</span><a class="archive-post-title" href= "/2017/11/18/jQuery的`ajax()`方法/" >jQuery的`ajax()`方法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/13</span><a class="archive-post-title" href= "/2017/11/13/Promise对象的一些例子/" >Promise对象的一些例子</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span><a class="archive-post-title" href= "/2017/11/12/Promise对象的个人理解/" >Promise对象的个人理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/05</span><a class="archive-post-title" href= "/2017/11/05/ES6中的Promise/" >ES6中的Promise</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/05</span><a class="archive-post-title" href= "/2017/11/05/ES6中的Map-映射/" >ES6中的Map(映射)</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/04</span><a class="archive-post-title" href= "/2017/11/04/ES6中的迭代器协议和可迭代协议/" >ES6中的迭代器协议和可迭代协议</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2017/11/03/ES6中的Symbol/" >ES6中的Symbol</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2017/11/03/ES6中的super和extends/" >ES6中的super和extends</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2017/11/03/ES5中JavaScript的类/" >ES5中JavaScript的类</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2017/11/03/ES6中的默默认值和解构/" >ES6中的默默认值和解构</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2017/11/03/this和箭头函数/" >this和箭头函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2017/11/03/this和普通函数/" >this和普通函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2017/11/03/ES6中的箭头函数/" >ES6中的箭头函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2017/11/03/EES6中的剩余参数/" >EES6中的剩余参数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/03</span><a class="archive-post-title" href= "/2017/11/03/ES6中的展开运算符/" >ES6中的展开运算符</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/02</span><a class="archive-post-title" href= "/2017/11/02/ES6中的For循环/" >ES6中的For循环</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/02</span><a class="archive-post-title" href= "/2017/11/02/对象字面量简写法/" >对象字面量简写法</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/28</span><a class="archive-post-title" href= "/2017/10/28/JavaScript中的伪类模式/" >JavaScript中的伪类模式</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/26</span><a class="archive-post-title" href= "/2017/10/26/JavaScript中的new关键词/" >JavaScript中的new关键词</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/25</span><a class="archive-post-title" href= "/2017/10/25/关于原型链的个人理解/" >关于原型链和函数类的个人理解和</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/25</span><a class="archive-post-title" href= "/2017/10/25/关于this绑定的情况/" >关于this绑定的情况</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/24</span><a class="archive-post-title" href= "/2017/10/24/JavaScript和this的个人理解/" >JavaScript闭包和this的个人理解</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/18</span><a class="archive-post-title" href= "/2017/10/18/HTTP协议/" >[Untitled Post]</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/16</span><a class="archive-post-title" href= "/2017/10/16/JavaScript中的DOM操作/" >[Untitled Post]</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-tags">
+    <div class="sidebar-tags-name">
+    
         <span class="sidebar-tag-name"><a href= "#">JavaScript</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">javaScript</a></span>
     
     </div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
